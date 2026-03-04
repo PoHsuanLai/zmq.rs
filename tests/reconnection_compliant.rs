@@ -31,12 +31,7 @@ mod test {
     /// 1. Initial connection and subscription works
     /// 2. After PUB drops and restarts on same port, SUB reconnects
     /// 3. Subscription is re-established and messages flow again
-    ///
-    /// NOTE: Currently ignored because zmq.rs doesn't fully implement
-    /// reconnection with subscription resync. This is a known limitation.
-    /// See: <https://github.com/zeromq/zmq.rs/issues/XXX>
     #[async_rt::test]
-    #[ignore = "zmq.rs reconnection with subscription resync not fully implemented"]
     async fn test_our_sub_reconnects_to_their_restarted_pub() {
         pretty_env_logger::try_init().ok();
 
@@ -88,11 +83,28 @@ mod test {
         let their_monitor = setup_monitor(&ctx, &their_pub_new, "inproc://pub-monitor");
         println!("Phase 4: Their PUB restarted on port {}", port);
 
-        // Phase 5: Wait for reconnection
-        // zmq.rs should auto-reconnect; libzmq will show ACCEPTED + HANDSHAKE_SUCCEEDED
-        // Give it plenty of time - reconnection can take a while
+        // Phase 5: Trigger disconnect detection and wait for reconnection
+        // Our SUB detects disconnect when it tries to receive. We use a short timeout
+        // recv() to trigger disconnect detection and allow the reconnection task to run.
+        println!("Phase 5: Triggering disconnect detection...");
+
+        // First recv attempt will detect the disconnection and trigger reconnection
+        match async_rt::task::timeout(Duration::from_millis(500), our_sub.recv()).await {
+            Ok(Ok(_msg)) => {
+                println!("Unexpectedly received a message during disconnect detection");
+            }
+            Ok(Err(e)) => {
+                println!("Recv error during disconnect detection (expected): {:?}", e);
+            }
+            Err(_) => {
+                println!("Recv timed out (disconnect detected, reconnection in progress)");
+            }
+        }
+
+        // Wait for reconnection to complete and subscription to re-propagate
+        // The reconnect task uses exponential backoff starting at 100ms
         let mut reconnected = false;
-        for attempt in 0..50 {
+        for attempt in 0..30 {
             async_rt::task::sleep(Duration::from_millis(100)).await;
 
             // Try to get monitor event without blocking
@@ -111,13 +123,14 @@ mod test {
         }
 
         if !reconnected {
-            println!("Warning: Didn't observe reconnection event after 5 seconds");
+            println!("Warning: Didn't observe reconnection event after 3 seconds");
         }
 
-        // Wait for subscription to re-propagate after reconnect
-        async_rt::task::sleep(Duration::from_millis(500)).await;
+        // Wait a bit more for subscription to propagate
+        async_rt::task::sleep(Duration::from_millis(300)).await;
 
         // Phase 6: Verify communication works after reconnect
+        println!("Phase 6: Sending message after reconnection...");
         their_pub_new
             .send("reconnected-message", 0)
             .expect("Failed to send");

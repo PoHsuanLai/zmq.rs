@@ -11,6 +11,7 @@ mod message;
 mod r#pub;
 mod pull;
 mod push;
+mod reconnect;
 mod rep;
 mod req;
 mod router;

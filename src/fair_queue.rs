@@ -15,6 +15,9 @@ pub(crate) struct QueueInner<S, K: Clone> {
     ready_queue: BinaryHeap<ReadyEvent<K>>,
     streams: HashMap<K, Pin<Box<S>>>,
     waker: Option<Waker>,
+    /// Callback invoked when a stream ends (peer disconnected).
+    /// Wrapped in Arc so it can be cloned and called outside the lock.
+    on_disconnect: Option<Arc<dyn Fn(K) + Send + Sync>>,
 }
 
 impl<S, K: Clone + Eq + Hash> QueueInner<S, K> {
@@ -31,6 +34,19 @@ impl<S, K: Clone + Eq + Hash> QueueInner<S, K> {
 
     pub fn remove(&mut self, k: &K) {
         self.streams.remove(k);
+    }
+
+    /// Clear all streams and the ready queue.
+    ///
+    /// Used during shutdown to ensure TCP connections are closed even when
+    /// other components (like reconnect tasks) hold Arc references to the inner.
+    pub fn clear(&mut self) {
+        self.streams.clear();
+        self.ready_queue.clear();
+        // Wake the waker so any pending poll_next returns
+        if let Some(w) = self.waker.take() {
+            w.wake();
+        }
     }
 }
 
@@ -133,6 +149,16 @@ where
                 }
                 Poll::Ready(None) => {
                     // Peer disconnected. Don't put the stream back.
+                    // Clone the callback Arc so we can call it outside the lock
+                    // (to avoid deadlock if callback accesses inner)
+                    let callback = {
+                        let inner = fair_queue.inner.lock();
+                        inner.on_disconnect.clone()
+                    };
+                    // Call callback outside the lock
+                    if let Some(callback) = callback {
+                        callback(event.key.clone());
+                    }
                     // Continue to poll other streams instead of returning None immediately.
                     continue;
                 }
@@ -155,8 +181,19 @@ impl<S, K: Clone> FairQueue<S, K> {
                 ready_queue: BinaryHeap::new(),
                 streams: HashMap::new(),
                 waker: None,
+                on_disconnect: None,
             })),
         }
+    }
+
+    /// Set a callback to be invoked when a stream ends (peer disconnected).
+    ///
+    /// The callback receives the key of the disconnected stream.
+    pub fn set_on_disconnect<F>(&mut self, callback: F)
+    where
+        F: Fn(K) + Send + Sync + 'static,
+    {
+        self.inner.lock().on_disconnect = Some(Arc::new(callback));
     }
 
     pub(crate) fn inner(&self) -> Arc<Mutex<QueueInner<S, K>>> {

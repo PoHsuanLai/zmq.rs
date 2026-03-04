@@ -1,14 +1,16 @@
-use crate::backend::Peer;
+use crate::backend::{DisconnectNotifier, Peer};
 use crate::codec::{FramedIo, Message, ZmqFramedRead};
 use crate::endpoint::Endpoint;
 use crate::error::{ZmqError, ZmqResult};
 use crate::fair_queue::FairQueue;
 use crate::fair_queue::QueueInner;
 use crate::message::ZmqMessage;
+use crate::reconnect::{ReconnectConfig, ReconnectHandle};
 use crate::transport::AcceptStopHandle;
 use crate::util::PeerIdentity;
 use crate::{
     MultiPeerBackend, Socket, SocketBackend, SocketEvent, SocketOptions, SocketRecv, SocketType,
+    TryIntoEndpoint,
 };
 
 use async_trait::async_trait;
@@ -34,6 +36,8 @@ pub(crate) struct SubSocketBackend {
     socket_options: SocketOptions,
     pub(crate) socket_monitor: Mutex<Option<mpsc::Sender<SocketEvent>>>,
     subs: Mutex<HashSet<String>>,
+    /// Notifiers for reconnection tasks - keyed by `peer_id`
+    disconnect_notifiers: Mutex<HashMap<PeerIdentity, DisconnectNotifier>>,
 }
 
 impl SubSocketBackend {
@@ -50,6 +54,7 @@ impl SubSocketBackend {
             socket_options: options,
             socket_monitor: Mutex::new(None),
             subs: Mutex::new(HashSet::new()),
+            disconnect_notifiers: Mutex::new(HashMap::new()),
         }
     }
 
@@ -59,6 +64,23 @@ impl SubSocketBackend {
         buf.extend_from_slice(subscription.as_bytes());
 
         buf.freeze().into()
+    }
+
+    /// Register a notifier to be called when a peer disconnects.
+    ///
+    /// Used by reconnection tasks to be notified when they should attempt reconnection.
+    pub(crate) fn register_disconnect_notifier(
+        &self,
+        peer_id: PeerIdentity,
+        notifier: DisconnectNotifier,
+    ) {
+        self.disconnect_notifiers.lock().insert(peer_id, notifier);
+    }
+
+    /// Unregister a disconnect notifier for a peer.
+    #[allow(dead_code)]
+    pub(crate) fn unregister_disconnect_notifier(&self, peer_id: &PeerIdentity) {
+        self.disconnect_notifiers.lock().remove(peer_id);
     }
 }
 
@@ -73,6 +95,11 @@ impl SocketBackend for SubSocketBackend {
 
     fn shutdown(&self) {
         self.peers.clear_sync();
+        // Clear fair_queue streams to ensure TCP connections are closed
+        // even when reconnect tasks still hold Arc references to the backend
+        if let Some(inner) = &self.fair_queue_inner {
+            inner.lock().clear();
+        }
     }
 
     fn monitor(&self) -> &Mutex<Option<mpsc::Sender<SocketEvent>>> {
@@ -116,6 +143,19 @@ impl MultiPeerBackend for SubSocketBackend {
             let _ = monitor.try_send(SocketEvent::Disconnected(peer_id.clone()));
         }
         self.peers.remove_sync(peer_id);
+        match &self.fair_queue_inner {
+            None => {}
+            Some(inner) => {
+                inner.lock().remove(peer_id);
+            }
+        };
+
+        // Notify reconnection task if registered
+        if let Some(mut notifier) = self.disconnect_notifiers.lock().remove(peer_id) {
+            // Use try_send to avoid blocking - if channel is full, the reconnect task
+            // will eventually notice the peer is gone
+            let _ = notifier.try_send(peer_id.clone());
+        }
     }
 }
 
@@ -123,10 +163,16 @@ pub struct SubSocket {
     backend: Arc<SubSocketBackend>,
     fair_queue: FairQueue<ZmqFramedRead, PeerIdentity>,
     binds: HashMap<Endpoint, AcceptStopHandle>,
+    /// Handles to background reconnection tasks
+    reconnect_handles: Vec<ReconnectHandle>,
 }
 
 impl Drop for SubSocket {
     fn drop(&mut self) {
+        // Shutdown all reconnection tasks
+        for handle in self.reconnect_handles.drain(..) {
+            handle.shutdown();
+        }
         self.backend.shutdown();
     }
 }
@@ -165,15 +211,24 @@ impl SubSocket {
 #[async_trait]
 impl Socket for SubSocket {
     fn with_options(options: SocketOptions) -> Self {
-        let fair_queue = FairQueue::new(true);
+        let mut fair_queue = FairQueue::new(true);
+        let backend = Arc::new(SubSocketBackend::with_options(
+            Some(fair_queue.inner()),
+            SocketType::SUB,
+            options,
+        ));
+
+        // Set callback to notify backend when a stream ends (peer disconnected)
+        let backend_for_callback = backend.clone();
+        fair_queue.set_on_disconnect(move |peer_id: PeerIdentity| {
+            backend_for_callback.peer_disconnected(&peer_id);
+        });
+
         Self {
-            backend: Arc::new(SubSocketBackend::with_options(
-                Some(fair_queue.inner()),
-                SocketType::SUB,
-                options,
-            )),
+            backend,
             fair_queue,
             binds: HashMap::new(),
+            reconnect_handles: Vec::new(),
         }
     }
 
@@ -183,6 +238,46 @@ impl Socket for SubSocket {
 
     fn binds(&mut self) -> &mut HashMap<Endpoint, AcceptStopHandle> {
         &mut self.binds
+    }
+
+    /// Connects to the given endpoint with automatic reconnection support.
+    ///
+    /// Unlike the default `Socket::connect`, this implementation spawns a
+    /// background task that will automatically reconnect if the connection
+    /// is lost. On reconnection, subscriptions are automatically re-sent
+    /// to the peer.
+    async fn connect(&mut self, endpoint: &str) -> ZmqResult<()> {
+        let endpoint = TryIntoEndpoint::try_into(endpoint)?;
+
+        // Initial connection
+        let (socket, resolved_endpoint) = crate::util::connect_forever(endpoint.clone()).await?;
+        let peer_id =
+            crate::util::peer_connected(socket, self.backend.clone() as Arc<dyn MultiPeerBackend>)
+                .await?;
+
+        // Emit Connected event
+        if let Some(monitor) = self.backend.monitor().lock().as_mut() {
+            let _ = monitor.try_send(SocketEvent::Connected(resolved_endpoint, peer_id.clone()));
+        }
+
+        // Create a closure that registers disconnect notifiers with the backend
+        let backend_for_closure = self.backend.clone();
+        let register_fn: crate::reconnect::RegisterDisconnectFn =
+            Box::new(move |peer_id, notifier| {
+                backend_for_closure.register_disconnect_notifier(peer_id, notifier);
+            });
+
+        // Spawn reconnection task
+        let reconnect_handle = crate::reconnect::spawn_reconnect_task(
+            endpoint,
+            self.backend.clone() as Arc<dyn MultiPeerBackend>,
+            peer_id,
+            register_fn,
+            ReconnectConfig::default(),
+        );
+        self.reconnect_handles.push(reconnect_handle);
+
+        Ok(())
     }
 
     fn monitor(&mut self) -> mpsc::Receiver<SocketEvent> {

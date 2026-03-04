@@ -11,7 +11,11 @@ use futures::channel::mpsc;
 use futures::SinkExt;
 use parking_lot::Mutex;
 
+use std::collections::HashMap;
 use std::sync::Arc;
+
+/// Sender for notifying reconnection tasks when a peer disconnects.
+pub(crate) type DisconnectNotifier = mpsc::Sender<PeerIdentity>;
 
 pub(crate) struct Peer {
     pub(crate) send_queue: ZmqFramedWrite,
@@ -24,6 +28,8 @@ pub(crate) struct GenericSocketBackend {
     socket_type: SocketType,
     socket_options: SocketOptions,
     pub(crate) socket_monitor: Mutex<Option<mpsc::Sender<SocketEvent>>>,
+    /// Notifiers for reconnection tasks - keyed by `peer_id`
+    disconnect_notifiers: Mutex<HashMap<PeerIdentity, DisconnectNotifier>>,
 }
 
 impl GenericSocketBackend {
@@ -39,7 +45,26 @@ impl GenericSocketBackend {
             socket_type,
             socket_options: options,
             socket_monitor: Mutex::new(None),
+            disconnect_notifiers: Mutex::new(HashMap::new()),
         }
+    }
+
+    /// Register a notifier to be called when a peer disconnects.
+    ///
+    /// Used by reconnection tasks to be notified when they should attempt reconnection.
+    #[allow(dead_code)] // Will be used when reconnection is added to more socket types
+    pub(crate) fn register_disconnect_notifier(
+        &self,
+        peer_id: PeerIdentity,
+        notifier: DisconnectNotifier,
+    ) {
+        self.disconnect_notifiers.lock().insert(peer_id, notifier);
+    }
+
+    /// Unregister a disconnect notifier for a peer.
+    #[allow(dead_code)] // Will be used when reconnection is added to more socket types
+    pub(crate) fn unregister_disconnect_notifier(&self, peer_id: &PeerIdentity) {
+        self.disconnect_notifiers.lock().remove(peer_id);
     }
 
     pub(crate) async fn send_round_robin(&self, message: Message) -> ZmqResult<PeerIdentity> {
@@ -95,6 +120,11 @@ impl SocketBackend for GenericSocketBackend {
 
     fn shutdown(&self) {
         self.peers.clear_sync();
+        // Clear fair_queue streams to ensure TCP connections are closed
+        // even when reconnect tasks still hold Arc references to the backend
+        if let Some(inner) = &self.fair_queue_inner {
+            inner.lock().clear();
+        }
     }
 
     fn monitor(&self) -> &Mutex<Option<mpsc::Sender<SocketEvent>>> {
@@ -126,5 +156,12 @@ impl MultiPeerBackend for GenericSocketBackend {
                 inner.lock().remove(peer_id);
             }
         };
+
+        // Notify reconnection task if registered
+        if let Some(mut notifier) = self.disconnect_notifiers.lock().remove(peer_id) {
+            // Use try_send to avoid blocking - if channel is full, the reconnect task
+            // will eventually notice the peer is gone
+            let _ = notifier.try_send(peer_id.clone());
+        }
     }
 }
