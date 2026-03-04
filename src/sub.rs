@@ -219,9 +219,12 @@ impl Socket for SubSocket {
         ));
 
         // Set callback to notify backend when a stream ends (peer disconnected)
-        let backend_for_callback = backend.clone();
+        // Use Weak to avoid Arc cycle: backend -> fair_queue_inner -> callback -> backend
+        let backend_weak = Arc::downgrade(&backend);
         fair_queue.set_on_disconnect(move |peer_id: PeerIdentity| {
-            backend_for_callback.peer_disconnected(&peer_id);
+            if let Some(backend) = backend_weak.upgrade() {
+                backend.peer_disconnected(&peer_id);
+            }
         });
 
         Self {

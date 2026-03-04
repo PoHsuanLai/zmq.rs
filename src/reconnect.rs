@@ -12,7 +12,7 @@ use crate::util::{greet_exchange, ready_exchange, PeerIdentity};
 use crate::MultiPeerBackend;
 
 use futures::channel::{mpsc, oneshot};
-use futures::StreamExt;
+use futures::{FutureExt, StreamExt};
 use rand::Rng;
 
 use std::sync::Arc;
@@ -91,7 +91,7 @@ pub fn spawn_reconnect_task(
     register_disconnect_fn: RegisterDisconnectFn,
     config: ReconnectConfig,
 ) -> ReconnectHandle {
-    let (shutdown_tx, mut shutdown_rx) = oneshot::channel();
+    let (shutdown_tx, shutdown_rx) = oneshot::channel();
     // Create the disconnect notification channel - this task owns the receiver
     let (disconnect_tx, mut disconnect_rx) = mpsc::channel::<PeerIdentity>(1);
 
@@ -100,6 +100,9 @@ pub fn spawn_reconnect_task(
 
     let task_handle = spawn(async move {
         log::debug!("Reconnect task started for endpoint: {}", endpoint);
+
+        // Fuse shutdown_rx so it can be polled multiple times after completion
+        let mut shutdown_rx = shutdown_rx.fuse();
 
         loop {
             // Wait for a disconnect notification or shutdown signal
@@ -128,7 +131,7 @@ pub fn spawn_reconnect_task(
             let mut current_interval = config.initial_interval;
             let mut attempt = 0u32;
 
-            loop {
+            'retry: loop {
                 attempt += 1;
                 log::debug!(
                     "Reconnection attempt {} to {} (waiting {:?})",
@@ -137,21 +140,41 @@ pub fn spawn_reconnect_task(
                     current_interval
                 );
 
-                // Wait before attempting reconnection
-                crate::async_rt::task::sleep(current_interval).await;
+                // Wait before attempting reconnection, but check for shutdown
+                let sleep_fut = crate::async_rt::task::sleep(current_interval).fuse();
+                futures::pin_mut!(sleep_fut);
+
+                futures::select! {
+                    _ = sleep_fut => {
+                        // Sleep completed, proceed to reconnection attempt
+                    }
+                    _ = shutdown_rx => {
+                        log::debug!("Shutdown received during backoff, stopping reconnect task");
+                        return;
+                    }
+                }
 
                 // Try to connect
                 match try_reconnect(&endpoint, backend.clone()).await {
-                    Ok(new_peer_id) => {
+                    Ok((new_peer_id, resolved_endpoint)) => {
                         log::info!(
                             "Successfully reconnected to {} (peer {:?})",
                             endpoint,
                             new_peer_id
                         );
+
+                        // Emit Connected event for monitor consumers
+                        if let Some(monitor) = backend.monitor().lock().as_mut() {
+                            let _ = monitor.try_send(crate::SocketEvent::Connected(
+                                resolved_endpoint,
+                                new_peer_id.clone(),
+                            ));
+                        }
+
                         // Register the new peer_id for future disconnect notifications
                         register_disconnect_fn(new_peer_id, disconnect_tx.clone());
                         // Reconnection successful, go back to waiting for disconnects
-                        break;
+                        break 'retry;
                     }
                     Err(e) => {
                         log::warn!(
@@ -190,12 +213,14 @@ pub fn spawn_reconnect_task(
 /// 2. ZMTP greeting exchange
 /// 3. Ready command exchange
 /// 4. Peer registration via `backend.peer_connected()`
+///
+/// Returns the new `peer_id` and resolved endpoint on success.
 async fn try_reconnect(
     endpoint: &Endpoint,
     backend: Arc<dyn MultiPeerBackend>,
-) -> crate::ZmqResult<PeerIdentity> {
+) -> crate::ZmqResult<(PeerIdentity, Endpoint)> {
     // Attempt transport-level connection
-    let (mut raw_socket, _resolved_endpoint) = transport::connect(endpoint).await?;
+    let (mut raw_socket, resolved_endpoint) = transport::connect(endpoint).await?;
 
     // Perform ZMTP handshake
     greet_exchange(&mut raw_socket).await?;
@@ -215,7 +240,7 @@ async fn try_reconnect(
     // This triggers subscription resync for SUB sockets
     backend.peer_connected(&peer_id, raw_socket).await;
 
-    Ok(peer_id)
+    Ok((peer_id, resolved_endpoint))
 }
 
 #[cfg(test)]
