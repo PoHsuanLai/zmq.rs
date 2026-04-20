@@ -16,10 +16,12 @@ mod rep;
 mod req;
 mod router;
 mod sub;
+mod sub_backend;
 mod task_handle;
 mod transport;
 pub mod util;
 mod xpub;
+mod xsub;
 
 #[doc(hidden)]
 pub mod __async_rt {
@@ -39,6 +41,7 @@ pub use crate::req::*;
 pub use crate::router::*;
 pub use crate::sub::*;
 pub use crate::xpub::*;
+pub use crate::xsub::*;
 
 use crate::codec::*;
 use crate::transport::AcceptStopHandle;

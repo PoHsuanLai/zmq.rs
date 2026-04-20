@@ -38,7 +38,6 @@ impl XPubSocketBackend {
         let data = match message {
             Message::Message(m) => {
                 if m.len() != 1 {
-                    log::warn!("Received message with unexpected length: {}", m.len());
                     return;
                 }
                 m.into_vec().pop().unwrap_or_default()
@@ -66,10 +65,7 @@ impl XPubSocketBackend {
                     }
                 }
             }
-            _ => log::warn!(
-                "Received message with unexpected first byte: {:?}",
-                data.first()
-            ),
+            _ => {}
         }
     }
 }

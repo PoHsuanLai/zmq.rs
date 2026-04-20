@@ -2,15 +2,14 @@ use crate::codec::{Message, ZmqFramedRead};
 use crate::endpoint::Endpoint;
 use crate::error::{ZmqError, ZmqResult};
 use crate::fair_queue::FairQueue;
-use crate::message::ZmqMessage;
-use crate::reconnect::ReconnectHandle;
 use crate::sub_backend::{
     connect_with_reconnect, SocketBinds, SubSocketBackend, SubscriptionMessageType,
 };
 use crate::transport::AcceptStopHandle;
 use crate::util::PeerIdentity;
 use crate::{
-    MultiPeerBackend, Socket, SocketBackend, SocketEvent, SocketOptions, SocketRecv, SocketType,
+    MultiPeerBackend, Socket, SocketBackend, SocketEvent, SocketOptions, SocketRecv, SocketSend,
+    SocketType,
 };
 
 use async_trait::async_trait;
@@ -20,15 +19,15 @@ use futures::StreamExt;
 use std::collections::HashMap;
 use std::sync::Arc;
 
-pub struct SubSocket {
+pub struct XSubSocket {
     backend: Arc<SubSocketBackend>,
     fair_queue: FairQueue<ZmqFramedRead, PeerIdentity>,
     binds: SocketBinds,
     /// Handles to background reconnection tasks
-    reconnect_handles: Vec<ReconnectHandle>,
+    reconnect_handles: Vec<crate::reconnect::ReconnectHandle>,
 }
 
-impl Drop for SubSocket {
+impl Drop for XSubSocket {
     fn drop(&mut self) {
         // Shutdown all reconnection tasks
         for handle in self.reconnect_handles.drain(..) {
@@ -38,7 +37,7 @@ impl Drop for SubSocket {
     }
 }
 
-impl SubSocket {
+impl XSubSocket {
     pub async fn subscribe(&mut self, subscription: &str) -> ZmqResult<()> {
         self.backend.remember_subscription(subscription.as_bytes());
         self.backend
@@ -58,12 +57,12 @@ impl SubSocket {
 }
 
 #[async_trait]
-impl Socket for SubSocket {
+impl Socket for XSubSocket {
     fn with_options(options: SocketOptions) -> Self {
         let mut fair_queue = FairQueue::new(true);
         let backend = Arc::new(SubSocketBackend::with_options(
             Some(fair_queue.inner()),
-            SocketType::SUB,
+            SocketType::XSUB,
             options,
         ));
 
@@ -110,20 +109,16 @@ impl Socket for SubSocket {
 }
 
 #[async_trait]
-impl SocketRecv for SubSocket {
-    async fn recv(&mut self) -> ZmqResult<ZmqMessage> {
+impl SocketRecv for XSubSocket {
+    async fn recv(&mut self) -> ZmqResult<crate::ZmqMessage> {
         loop {
             match self.fair_queue.next().await {
-                Some((_peer_id, Ok(Message::Message(message)))) => {
-                    return Ok(message);
-                }
+                Some((_peer_id, Ok(Message::Message(message)))) => return Ok(message),
                 Some((_peer_id, Ok(_msg))) => {
-                    // Ignore non-message frames. SUB sockets are designed to only receive actual messages,
-                    // not internal protocol frames like commands or greetings.
+                    // Ignore non-message frames (commands, greetings, etc.)
                 }
                 Some((peer_id, Err(e))) => {
                     self.backend.peer_disconnected(&peer_id);
-                    // Handle potential errors from the fair queue
                     return Err(e.into());
                 }
                 None => {
@@ -133,5 +128,50 @@ impl SocketRecv for SubSocket {
                 }
             }
         }
+    }
+}
+
+#[async_trait]
+impl SocketSend for XSubSocket {
+    async fn send(&mut self, message: crate::ZmqMessage) -> ZmqResult<()> {
+        // If the message is a subscription frame (0x01/0x00 prefix), update
+        // local state and send it reliably to all upstream peers.
+        // Otherwise, treat it as a normal application message and fanout.
+        if self.backend.apply_subscription_message(&message) {
+            self.backend.broadcast_message_reliably(message).await
+        } else {
+            self.backend.fanout_message(message).await
+        }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::async_rt;
+    use crate::util::tests::{
+        test_bind_to_any_port_helper, test_bind_to_unspecified_interface_helper,
+    };
+    use crate::ZmqResult;
+    use std::net::IpAddr;
+
+    #[async_rt::test]
+    async fn test_bind_to_any_port() -> ZmqResult<()> {
+        let s = XSubSocket::new();
+        test_bind_to_any_port_helper(s).await
+    }
+
+    #[async_rt::test]
+    async fn test_bind_to_any_ipv4_interface() -> ZmqResult<()> {
+        let any_ipv4: IpAddr = "0.0.0.0".parse().unwrap();
+        let s = XSubSocket::new();
+        test_bind_to_unspecified_interface_helper(any_ipv4, s, 4040).await
+    }
+
+    #[async_rt::test]
+    async fn test_bind_to_any_ipv6_interface() -> ZmqResult<()> {
+        let any_ipv6: IpAddr = "::".parse().unwrap();
+        let s = XSubSocket::new();
+        test_bind_to_unspecified_interface_helper(any_ipv6, s, 4050).await
     }
 }
