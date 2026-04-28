@@ -64,3 +64,7 @@ bench = false
 [[bench]]
 name = "req_rep"
 harness = false
+
+[[bench]]
+name = "compare_libzmq"
+harness = false

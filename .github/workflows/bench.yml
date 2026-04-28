@@ -1,0 +1,184 @@
+name: Bench
+
+# Runs compare_libzmq on ubuntu-24.04-arm and publishes criterion reports
+# to gh-pages. Not wired to PRs — runs are ~20 min and GHA shared runners
+# are too noisy for PR-time numbers to be useful.
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * 0"
+
+jobs:
+  bench:
+    name: Criterion ${{ matrix.name }}
+    # ubuntu-24.04-arm: less contended than shared x86 runners (small-msg
+    # TCP rows on x86 saw ~60× variance between runs).
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 50
+    strategy:
+      fail-fast: false
+      matrix:
+        # One shard per (side, pairing) so the whole suite finishes in
+        # the time of the slowest single shard. The publish job
+        # discovers shards by directory glob.
+        include:
+          - name: compare_libzmq-libzmq-pub_sub
+            filter: "^libzmq/pub_sub/"
+          - name: compare_libzmq-libzmq-req_rep
+            filter: "^libzmq/req_rep/"
+          - name: compare_libzmq-libzmq-push_pull
+            filter: "^libzmq/push_pull/"
+          - name: compare_libzmq-libzmq-pub_xsub
+            filter: "^libzmq/pub_xsub/"
+          - name: compare_libzmq-libzmq-xpub_sub
+            filter: "^libzmq/xpub_sub/"
+          - name: compare_libzmq-zmqrs-pub_sub
+            filter: "^zmqrs/pub_sub/"
+          - name: compare_libzmq-zmqrs-req_rep
+            filter: "^zmqrs/req_rep/"
+          - name: compare_libzmq-zmqrs-push_pull
+            filter: "^zmqrs/push_pull/"
+          - name: compare_libzmq-zmqrs-pub_xsub
+            filter: "^zmqrs/pub_xsub/"
+          - name: compare_libzmq-zmqrs-xpub_sub
+            filter: "^zmqrs/xpub_sub/"
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install libzmq
+        run: sudo apt-get update && sudo apt-get install -y libzmq3-dev
+
+      - name: Record runner info
+        run: |
+          {
+            echo "### Runner"
+            echo "- date: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            echo "- commit: ${GITHUB_SHA}"
+            echo "- ref: ${GITHUB_REF}"
+            echo "- runner: ubuntu-24.04-arm"
+            echo "- bench: ${{ matrix.name }}"
+            echo
+            echo "### CPU"
+            lscpu | grep -E "Model name|Architecture|CPU\(s\)|Thread|MHz" | sed 's/^/- /'
+            echo
+            echo "### Memory"
+            free -h | head -2 | sed 's/^/- /'
+            echo
+            echo "### Kernel"
+            uname -a | sed 's/^/- /'
+            echo
+            echo "### libzmq"
+            dpkg -s libzmq3-dev | grep -E "Version|Package" | sed 's/^/- /'
+            echo
+            echo "### rustc"
+            rustc --version | sed 's/^/- /'
+          } | tee runner-info.md
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          key: bench-compare_libzmq
+
+      - name: Run ${{ matrix.name }} bench
+        run: cargo bench --bench compare_libzmq -- "${{ matrix.filter }}" 2>&1 | tee bench-output.txt
+
+      - name: Upload criterion results
+        uses: actions/upload-artifact@v4
+        with:
+          name: criterion-${{ matrix.name }}-${{ github.sha }}
+          path: |
+            runner-info.md
+            bench-output.txt
+            target/criterion/
+          retention-days: 90
+
+  # ── Publish HTML reports to GitHub Pages ─────────────────────────────────────
+  # Downloads every shard's criterion output, stitches them into a single site
+  # under runs/<sha>/<name>/, writes a landing page, and commits to gh-pages.
+  publish:
+    name: Publish to gh-pages
+    needs: bench
+    # `if: always()` so a single shard's timeout doesn't drop the data
+    # from the rest. The download step ignores missing artifacts.
+    if: always()
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          fetch-depth: 0
+        continue-on-error: true
+
+      # Render scripts + HTML templates live on the source branch; stage
+      # them next to the gh-pages checkout so the publish step can use them.
+      - name: Fetch render scripts and templates from source branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          path: _src
+          sparse-checkout: |
+            .github/workflows/bench-compare.py
+            .github/workflows/bench-render-index.py
+            .github/workflows/bench-templates
+          sparse-checkout-cone-mode: false
+
+      - name: Initialize gh-pages if missing
+        run: |
+          if [ ! -f .nojekyll ]; then
+            git checkout --orphan gh-pages || true
+            git rm -rf . 2>/dev/null || true
+            touch .nojekyll
+            echo "# zmq.rs bench reports" > README.md
+            git add .nojekyll README.md
+            git -c user.name=github-actions -c user.email=github-actions@github.com \
+              commit -m "Initialize gh-pages" || true
+          fi
+
+      - name: Download all criterion artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: criterion-*-${{ github.sha }}
+          path: /tmp/artifacts
+
+      - name: Stage reports into site tree
+        run: |
+          SHA_SHORT="${GITHUB_SHA:0:7}"
+          RUN_DIR="runs/${SHA_SHORT}"
+          mkdir -p "${RUN_DIR}"
+          rm -rf latest
+
+          for artifact in /tmp/artifacts/criterion-*; do
+            [ -d "${artifact}" ] || continue
+            name="$(basename "${artifact}" | sed "s/^criterion-//; s/-${GITHUB_SHA}$//")"
+            target="${RUN_DIR}/${name}"
+            mkdir -p "${target}"
+            cp -r "${artifact}/target/criterion/." "${target}/" 2>/dev/null || true
+            cp "${artifact}/runner-info.md" "${target}/runner-info.md" 2>/dev/null || true
+            cp "${artifact}/bench-output.txt" "${target}/bench-output.txt" 2>/dev/null || true
+          done
+
+          # Mirror to /latest for a stable URL.
+          cp -r "${RUN_DIR}" latest
+
+          # Render comparison.html and index.html from templates.
+          python3 _src/.github/workflows/bench-compare.py latest .
+          python3 _src/.github/workflows/bench-render-index.py . \
+            "${SHA_SHORT}" "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          rm -rf _src
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to publish"
+            exit 0
+          fi
+          SHA_SHORT="${GITHUB_SHA:0:7}"
+          git commit -m "Publish bench reports for ${SHA_SHORT}"
+          git push origin gh-pages

@@ -1,0 +1,19 @@
+body{font-family:system-ui,sans-serif;max-width:1100px;margin:2em auto;padding:0 1em;line-height:1.5}
+h1,h2{border-bottom:1px solid #ddd;padding-bottom:.3em}
+table{border-collapse:collapse;width:100%;font-size:.95em;margin:1em 0}
+th,td{padding:.4em .7em;border-bottom:1px solid #eee;text-align:left}
+th{background:#f7f7f7;font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+td.ratio{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+td.ratio.huge-win{color:#1b7f3c;background:#e6f7ec}
+td.ratio.win{color:#2b8a4a}
+td.ratio.tie{color:#666}
+td.ratio.loss{color:#b0320c;background:#fde9e3}
+a{color:#1a6fbf;text-decoration:none}
+a:hover{text-decoration:underline}
+tbody tr:hover{background:#fafafa}
+p.summary{background:#f7f7f7;padding:.6em 1em;border-left:3px solid #1a6fbf}
+code{background:#f4f4f4;padding:.1em .3em;border-radius:3px}
+ul{padding-left:1.2em}
+.cta{display:inline-block;background:#1a6fbf;color:#fff;padding:.5em 1em;border-radius:4px;text-decoration:none;margin:.5em 0}
+.cta:hover{background:#155a9a;text-decoration:none}
