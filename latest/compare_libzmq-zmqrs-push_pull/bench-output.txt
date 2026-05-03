@@ -4,66 +4,68 @@
 [1m[92m      Adding[0m rand v0.9.4 [1m[33m(available: v0.10.1)[0m
 [1m[92m      Adding[0m thiserror v1.0.69 [1m[33m(available: v2.0.18)[0m
 [1m[92m   Compiling[0m zeromq v0.6.0-pre.1 (/home/runner/work/zmq.rs/zmq.rs)
-[1m[92m    Finished[0m `bench` profile [optimized] target(s) in 10.96s
+[1m[92m    Finished[0m `bench` profile [optimized] target(s) in 11.98s
 [1m[92m     Running[0m benches/compare_libzmq.rs (target/release/deps/compare_libzmq-8b34169a0b2f5a20)
 Gnuplot not found, using plotters backend
 Benchmarking zmqrs/push_pull/tcp/16
 Benchmarking zmqrs/push_pull/tcp/16: Warming up for 2.0000 s
-Benchmarking zmqrs/push_pull/tcp/16: Collecting 30 samples in estimated 10.006 s (434k iterations)
+Benchmarking zmqrs/push_pull/tcp/16: Collecting 30 samples in estimated 10.005 s (428k iterations)
 Benchmarking zmqrs/push_pull/tcp/16: Analyzing
-zmqrs/push_pull/tcp/16  time:   [22.777 µs 22.931 µs 23.110 µs]
-                        thrpt:  [676.11 KiB/s 681.39 KiB/s 686.01 KiB/s]
-Benchmarking zmqrs/push_pull/tcp/256
-Benchmarking zmqrs/push_pull/tcp/256: Warming up for 2.0000 s
-Benchmarking zmqrs/push_pull/tcp/256: Collecting 30 samples in estimated 10.010 s (439k iterations)
-Benchmarking zmqrs/push_pull/tcp/256: Analyzing
-zmqrs/push_pull/tcp/256 time:   [22.855 µs 22.983 µs 23.117 µs]
-                        thrpt:  [10.561 MiB/s 10.623 MiB/s 10.682 MiB/s]
+zmqrs/push_pull/tcp/16  time:   [23.173 µs 23.292 µs 23.407 µs]
+                        thrpt:  [667.54 KiB/s 670.83 KiB/s 674.27 KiB/s]
 Found 1 outliers among 30 measurements (3.33%)
   1 (3.33%) high mild
+Benchmarking zmqrs/push_pull/tcp/256
+Benchmarking zmqrs/push_pull/tcp/256: Warming up for 2.0000 s
+Benchmarking zmqrs/push_pull/tcp/256: Collecting 30 samples in estimated 10.008 s (429k iterations)
+Benchmarking zmqrs/push_pull/tcp/256: Analyzing
+zmqrs/push_pull/tcp/256 time:   [23.078 µs 23.217 µs 23.355 µs]
+                        thrpt:  [10.453 MiB/s 10.516 MiB/s 10.579 MiB/s]
 Benchmarking zmqrs/push_pull/tcp/4096
 Benchmarking zmqrs/push_pull/tcp/4096: Warming up for 2.0000 s
-Benchmarking zmqrs/push_pull/tcp/4096: Collecting 30 samples in estimated 10.004 s (423k iterations)
+Benchmarking zmqrs/push_pull/tcp/4096: Collecting 30 samples in estimated 10.011 s (417k iterations)
 Benchmarking zmqrs/push_pull/tcp/4096: Analyzing
 zmqrs/push_pull/tcp/4096
-                        time:   [23.445 µs 23.573 µs 23.694 µs]
-                        thrpt:  [164.86 MiB/s 165.71 MiB/s 166.61 MiB/s]
-Found 1 outliers among 30 measurements (3.33%)
-  1 (3.33%) low mild
+                        time:   [23.919 µs 24.114 µs 24.301 µs]
+                        thrpt:  [160.75 MiB/s 161.99 MiB/s 163.31 MiB/s]
 Benchmarking zmqrs/push_pull/tcp/65536
 Benchmarking zmqrs/push_pull/tcp/65536: Warming up for 2.0000 s
-Benchmarking zmqrs/push_pull/tcp/65536: Collecting 30 samples in estimated 10.011 s (425k iterations)
+Benchmarking zmqrs/push_pull/tcp/65536: Collecting 30 samples in estimated 10.002 s (411k iterations)
 Benchmarking zmqrs/push_pull/tcp/65536: Analyzing
 zmqrs/push_pull/tcp/65536
-                        time:   [23.258 µs 23.413 µs 23.565 µs]
-                        thrpt:  [2.5901 GiB/s 2.6069 GiB/s 2.6243 GiB/s]
-Found 1 outliers among 30 measurements (3.33%)
-  1 (3.33%) low mild
+                        time:   [23.637 µs 23.776 µs 23.979 µs]
+                        thrpt:  [2.5453 GiB/s 2.5671 GiB/s 2.5822 GiB/s]
+Found 2 outliers among 30 measurements (6.67%)
+  2 (6.67%) high mild
 
 Benchmarking zmqrs/push_pull/ipc/16
 Benchmarking zmqrs/push_pull/ipc/16: Warming up for 2.0000 s
-Benchmarking zmqrs/push_pull/ipc/16: Collecting 30 samples in estimated 10.006 s (604k iterations)
+Benchmarking zmqrs/push_pull/ipc/16: Collecting 30 samples in estimated 10.003 s (603k iterations)
 Benchmarking zmqrs/push_pull/ipc/16: Analyzing
-zmqrs/push_pull/ipc/16  time:   [16.399 µs 16.508 µs 16.613 µs]
-                        thrpt:  [940.52 KiB/s 946.51 KiB/s 952.82 KiB/s]
+zmqrs/push_pull/ipc/16  time:   [16.390 µs 16.567 µs 16.730 µs]
+                        thrpt:  [933.94 KiB/s 943.12 KiB/s 953.33 KiB/s]
+Found 1 outliers among 30 measurements (3.33%)
+  1 (3.33%) low mild
 Benchmarking zmqrs/push_pull/ipc/256
 Benchmarking zmqrs/push_pull/ipc/256: Warming up for 2.0000 s
-Benchmarking zmqrs/push_pull/ipc/256: Collecting 30 samples in estimated 10.001 s (604k iterations)
+Benchmarking zmqrs/push_pull/ipc/256: Collecting 30 samples in estimated 10.002 s (598k iterations)
 Benchmarking zmqrs/push_pull/ipc/256: Analyzing
-zmqrs/push_pull/ipc/256 time:   [16.353 µs 16.466 µs 16.590 µs]
-                        thrpt:  [14.716 MiB/s 14.827 MiB/s 14.930 MiB/s]
+zmqrs/push_pull/ipc/256 time:   [16.642 µs 16.818 µs 16.974 µs]
+                        thrpt:  [14.383 MiB/s 14.517 MiB/s 14.671 MiB/s]
 Benchmarking zmqrs/push_pull/ipc/4096
 Benchmarking zmqrs/push_pull/ipc/4096: Warming up for 2.0000 s
-Benchmarking zmqrs/push_pull/ipc/4096: Collecting 30 samples in estimated 10.004 s (604k iterations)
+Benchmarking zmqrs/push_pull/ipc/4096: Collecting 30 samples in estimated 10.001 s (602k iterations)
 Benchmarking zmqrs/push_pull/ipc/4096: Analyzing
 zmqrs/push_pull/ipc/4096
-                        time:   [16.439 µs 16.528 µs 16.628 µs]
-                        thrpt:  [234.92 MiB/s 236.35 MiB/s 237.62 MiB/s]
+                        time:   [16.600 µs 16.717 µs 16.864 µs]
+                        thrpt:  [231.63 MiB/s 233.67 MiB/s 235.32 MiB/s]
 Benchmarking zmqrs/push_pull/ipc/65536
 Benchmarking zmqrs/push_pull/ipc/65536: Warming up for 2.0000 s
-Benchmarking zmqrs/push_pull/ipc/65536: Collecting 30 samples in estimated 10.002 s (313k iterations)
+Benchmarking zmqrs/push_pull/ipc/65536: Collecting 30 samples in estimated 10.002 s (307k iterations)
 Benchmarking zmqrs/push_pull/ipc/65536: Analyzing
 zmqrs/push_pull/ipc/65536
-                        time:   [32.008 µs 32.139 µs 32.269 µs]
-                        thrpt:  [1.8915 GiB/s 1.8991 GiB/s 1.9069 GiB/s]
+                        time:   [32.251 µs 32.446 µs 32.657 µs]
+                        thrpt:  [1.8690 GiB/s 1.8811 GiB/s 1.8925 GiB/s]
+Found 2 outliers among 30 measurements (6.67%)
+  2 (6.67%) high mild
 
