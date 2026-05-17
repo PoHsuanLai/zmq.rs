@@ -4,77 +4,89 @@
 [1m[92m      Adding[0m rand v0.9.4 [1m[33m(available: v0.10.1)[0m
 [1m[92m      Adding[0m thiserror v1.0.69 [1m[33m(available: v2.0.18)[0m
 [1m[92m Downloading[0m crates ...
-[1m[92m  Downloaded[0m hashbrown v0.17.1
+[1m[92m  Downloaded[0m saa v5.6.0
 [1m[92m  Downloaded[0m cc v1.2.62
+[1m[92m  Downloaded[0m hashbrown v0.17.1
+[1m[92m  Downloaded[0m scc v3.7.1
 [1m[92m  Downloaded[0m tokio v1.52.3
 [1m[92m   Compiling[0m hashbrown v0.17.1
 [1m[92m   Compiling[0m cc v1.2.62
+[1m[92m   Compiling[0m saa v5.6.0
 [1m[92m   Compiling[0m tokio v1.52.3
+[1m[92m   Compiling[0m sdd v4.8.6
 [1m[92m   Compiling[0m indexmap v2.14.0
-[1m[92m   Compiling[0m zeromq-src v0.2.6+4.3.4
 [1m[92m   Compiling[0m toml_edit v0.22.27
+[1m[92m   Compiling[0m zeromq-src v0.2.6+4.3.4
+[1m[92m   Compiling[0m scc v3.7.1
 [1m[92m   Compiling[0m toml v0.8.23
 [1m[92m   Compiling[0m system-deps v6.2.2
 [1m[92m   Compiling[0m zmq-sys2 v0.3.0
 [1m[92m   Compiling[0m tokio-util v0.7.18
 [1m[92m   Compiling[0m zeromq v0.6.0-pre.1 (/home/runner/work/zmq.rs/zmq.rs)
 [1m[92m   Compiling[0m zmq2 v0.5.0
-[1m[92m    Finished[0m `bench` profile [optimized] target(s) in 1m 00s
-[1m[92m     Running[0m benches/compare_libzmq.rs (target/release/deps/compare_libzmq-082b90099155f227)
+[1m[92m    Finished[0m `bench` profile [optimized] target(s) in 42.77s
+[1m[92m     Running[0m benches/compare_libzmq.rs (target/release/deps/compare_libzmq-d12b8dd4836e8d29)
 Gnuplot not found, using plotters backend
 Benchmarking libzmq/req_rep/tcp/16
 Benchmarking libzmq/req_rep/tcp/16: Warming up for 2.0000 s
-Benchmarking libzmq/req_rep/tcp/16: Collecting 30 samples in estimated 10.013 s (178k iterations)
+Benchmarking libzmq/req_rep/tcp/16: Collecting 30 samples in estimated 10.008 s (181k iterations)
 Benchmarking libzmq/req_rep/tcp/16: Analyzing
-libzmq/req_rep/tcp/16   time:   [55.945 µs 56.385 µs 56.841 µs]
-                        thrpt:  [274.89 KiB/s 277.11 KiB/s 279.29 KiB/s]
+libzmq/req_rep/tcp/16   time:   [54.654 µs 54.956 µs 55.273 µs]
+                        thrpt:  [282.69 KiB/s 284.32 KiB/s 285.89 KiB/s]
 Benchmarking libzmq/req_rep/tcp/256
 Benchmarking libzmq/req_rep/tcp/256: Warming up for 2.0000 s
-Benchmarking libzmq/req_rep/tcp/256: Collecting 30 samples in estimated 10.006 s (173k iterations)
+Benchmarking libzmq/req_rep/tcp/256: Collecting 30 samples in estimated 10.020 s (177k iterations)
 Benchmarking libzmq/req_rep/tcp/256: Analyzing
-libzmq/req_rep/tcp/256  time:   [57.804 µs 58.135 µs 58.444 µs]
-                        thrpt:  [4.1773 MiB/s 4.1996 MiB/s 4.2236 MiB/s]
+libzmq/req_rep/tcp/256  time:   [56.331 µs 56.570 µs 56.817 µs]
+                        thrpt:  [4.2969 MiB/s 4.3157 MiB/s 4.3341 MiB/s]
+Found 1 outliers among 30 measurements (3.33%)
+  1 (3.33%) high mild
 Benchmarking libzmq/req_rep/tcp/4096
 Benchmarking libzmq/req_rep/tcp/4096: Warming up for 2.0000 s
-Benchmarking libzmq/req_rep/tcp/4096: Collecting 30 samples in estimated 10.002 s (163k iterations)
+Benchmarking libzmq/req_rep/tcp/4096: Collecting 30 samples in estimated 10.019 s (167k iterations)
 Benchmarking libzmq/req_rep/tcp/4096: Analyzing
-libzmq/req_rep/tcp/4096 time:   [61.343 µs 61.837 µs 62.338 µs]
-                        thrpt:  [62.663 MiB/s 63.170 MiB/s 63.679 MiB/s]
+libzmq/req_rep/tcp/4096 time:   [59.527 µs 59.801 µs 60.075 µs]
+                        thrpt:  [65.023 MiB/s 65.321 MiB/s 65.621 MiB/s]
+Found 1 outliers among 30 measurements (3.33%)
+  1 (3.33%) high mild
 Benchmarking libzmq/req_rep/tcp/65536
 Benchmarking libzmq/req_rep/tcp/65536: Warming up for 2.0000 s
-Benchmarking libzmq/req_rep/tcp/65536: Collecting 30 samples in estimated 10.023 s (99k iterations)
+Benchmarking libzmq/req_rep/tcp/65536: Collecting 30 samples in estimated 10.023 s (102k iterations)
 Benchmarking libzmq/req_rep/tcp/65536: Analyzing
 libzmq/req_rep/tcp/65536
-                        time:   [101.21 µs 102.00 µs 102.83 µs]
-                        thrpt:  [607.80 MiB/s 612.77 MiB/s 617.56 MiB/s]
+                        time:   [97.577 µs 98.170 µs 98.721 µs]
+                        thrpt:  [633.09 MiB/s 636.65 MiB/s 640.52 MiB/s]
+Found 1 outliers among 30 measurements (3.33%)
+  1 (3.33%) high mild
 
 Benchmarking libzmq/req_rep/ipc/16
 Benchmarking libzmq/req_rep/ipc/16: Warming up for 2.0000 s
-Benchmarking libzmq/req_rep/ipc/16: Collecting 30 samples in estimated 10.014 s (204k iterations)
+Benchmarking libzmq/req_rep/ipc/16: Collecting 30 samples in estimated 10.005 s (208k iterations)
 Benchmarking libzmq/req_rep/ipc/16: Analyzing
-libzmq/req_rep/ipc/16   time:   [49.352 µs 49.565 µs 49.727 µs]
-                        thrpt:  [314.21 KiB/s 315.24 KiB/s 316.60 KiB/s]
+libzmq/req_rep/ipc/16   time:   [47.907 µs 48.159 µs 48.470 µs]
+                        thrpt:  [322.37 KiB/s 324.45 KiB/s 326.15 KiB/s]
 Found 1 outliers among 30 measurements (3.33%)
   1 (3.33%) high mild
 Benchmarking libzmq/req_rep/ipc/256
 Benchmarking libzmq/req_rep/ipc/256: Warming up for 2.0000 s
-Benchmarking libzmq/req_rep/ipc/256: Collecting 30 samples in estimated 10.012 s (196k iterations)
+Benchmarking libzmq/req_rep/ipc/256: Collecting 30 samples in estimated 10.007 s (200k iterations)
 Benchmarking libzmq/req_rep/ipc/256: Analyzing
-libzmq/req_rep/ipc/256  time:   [51.378 µs 51.637 µs 51.900 µs]
-                        thrpt:  [4.7041 MiB/s 4.7280 MiB/s 4.7519 MiB/s]
+libzmq/req_rep/ipc/256  time:   [49.736 µs 49.918 µs 50.092 µs]
+                        thrpt:  [4.8739 MiB/s 4.8908 MiB/s 4.9087 MiB/s]
 Benchmarking libzmq/req_rep/ipc/4096
 Benchmarking libzmq/req_rep/ipc/4096: Warming up for 2.0000 s
-Benchmarking libzmq/req_rep/ipc/4096: Collecting 30 samples in estimated 10.020 s (183k iterations)
+Benchmarking libzmq/req_rep/ipc/4096: Collecting 30 samples in estimated 10.011 s (189k iterations)
 Benchmarking libzmq/req_rep/ipc/4096: Analyzing
-libzmq/req_rep/ipc/4096 time:   [54.132 µs 54.331 µs 54.555 µs]
-                        thrpt:  [71.602 MiB/s 71.897 MiB/s 72.162 MiB/s]
+libzmq/req_rep/ipc/4096 time:   [52.495 µs 52.654 µs 52.850 µs]
+                        thrpt:  [73.912 MiB/s 74.187 MiB/s 74.412 MiB/s]
 Benchmarking libzmq/req_rep/ipc/65536
 Benchmarking libzmq/req_rep/ipc/65536: Warming up for 2.0000 s
-Benchmarking libzmq/req_rep/ipc/65536: Collecting 30 samples in estimated 10.028 s (120k iterations)
+Benchmarking libzmq/req_rep/ipc/65536: Collecting 30 samples in estimated 10.033 s (123k iterations)
 Benchmarking libzmq/req_rep/ipc/65536: Analyzing
 libzmq/req_rep/ipc/65536
-                        time:   [82.451 µs 82.874 µs 83.314 µs]
-                        thrpt:  [750.18 MiB/s 754.16 MiB/s 758.03 MiB/s]
-Found 2 outliers among 30 measurements (6.67%)
-  2 (6.67%) high mild
+                        time:   [80.860 µs 81.149 µs 81.434 µs]
+                        thrpt:  [767.50 MiB/s 770.19 MiB/s 772.94 MiB/s]
+Found 3 outliers among 30 measurements (10.00%)
+  2 (6.67%) low mild
+  1 (3.33%) high mild
 
