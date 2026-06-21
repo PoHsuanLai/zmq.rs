@@ -1,201 +1,210 @@
 [1m[92m    Updating[0m crates.io index
-[1m[92m     Locking[0m 202 packages to latest compatible versions
+[1m[92m     Locking[0m 184 packages to latest compatible versions
 [1m[92m      Adding[0m criterion v0.5.1 [1m[33m(available: v0.8.2)[0m
 [1m[92m      Adding[0m rand v0.9.4 [1m[33m(available: v0.10.1)[0m
 [1m[92m      Adding[0m thiserror v1.0.69 [1m[33m(available: v2.0.18)[0m
 [1m[92m Downloading[0m crates ...
-[1m[92m  Downloaded[0m log v0.4.32
 [1m[92m  Downloaded[0m smallvec v1.15.2
-[1m[92m  Downloaded[0m cc v1.2.64
+[1m[92m  Downloaded[0m getrandom v0.4.3
+[1m[92m  Downloaded[0m cc v1.2.65
+[1m[92m  Downloaded[0m bytes v1.12.0
 [1m[92m  Downloaded[0m uuid v1.23.3
 [1m[92m  Downloaded[0m memchr v2.8.2
-[1m[92m  Downloaded[0m zerocopy-derive v0.8.52
-[1m[92m  Downloaded[0m regex v1.12.4
-[1m[92m  Downloaded[0m scc v3.7.3
 [1m[92m  Downloaded[0m chrono v0.4.45
-[1m[92m  Downloaded[0m zerocopy v0.8.52
+[1m[92m  Downloaded[0m scc v3.8.3
+[1m[92m  Downloaded[0m syn v2.0.118
+[1m[92m  Downloaded[0m regex v1.12.4
+[1m[92m  Downloaded[0m log v0.4.33
 [1m[92m  Downloaded[0m regex-syntax v0.8.11
+[1m[92m  Downloaded[0m zerocopy v0.8.52
+[1m[92m  Downloaded[0m zerocopy-derive v0.8.52
 [1m[92m   Compiling[0m memchr v2.8.2
+[1m[92m   Compiling[0m syn v2.0.118
 [1m[92m   Compiling[0m zerocopy v0.8.52
-[1m[92m   Compiling[0m zerocopy-derive v0.8.52
-[1m[92m   Compiling[0m log v0.4.32
 [1m[92m   Compiling[0m smallvec v1.15.2
-[1m[92m   Compiling[0m cfg-expr v0.15.8
-[1m[92m   Compiling[0m cc v1.2.64
-[1m[92m   Compiling[0m aho-corasick v1.1.4
+[1m[92m   Compiling[0m log v0.4.33
+[1m[92m   Compiling[0m cc v1.2.65
 [1m[92m   Compiling[0m dircpy v0.3.20
+[1m[92m   Compiling[0m aho-corasick v1.1.4
+[1m[92m   Compiling[0m cfg-expr v0.15.8
 [1m[92m   Compiling[0m regex-syntax v0.8.11
 [1m[92m   Compiling[0m system-deps v6.2.2
-[1m[92m   Compiling[0m regex-automata v0.4.14
 [1m[92m   Compiling[0m zeromq-src v0.2.6+4.3.4
-[1m[92m   Compiling[0m parking_lot_core v0.9.12
-[1m[92m   Compiling[0m regex v1.12.4
+[1m[92m   Compiling[0m zerocopy-derive v0.8.52
+[1m[92m   Compiling[0m futures-macro v0.3.32
+[1m[92m   Compiling[0m regex-automata v0.4.14
 [1m[92m   Compiling[0m futures-util v0.3.32
+[1m[92m   Compiling[0m regex v1.12.4
+[1m[92m   Compiling[0m parking_lot_core v0.9.12
+[1m[92m   Compiling[0m serde_derive v1.0.228
 [1m[92m   Compiling[0m zmq-sys2 v0.3.0
+[1m[92m   Compiling[0m bytes v1.12.0
+[1m[92m   Compiling[0m getrandom v0.4.3
 [1m[92m   Compiling[0m parking_lot v0.12.5
-[1m[92m   Compiling[0m ppv-lite86 v0.2.21
 [1m[92m   Compiling[0m half v2.7.1
-[1m[92m   Compiling[0m ciborium-ll v0.2.2
+[1m[92m   Compiling[0m ppv-lite86 v0.2.21
+[1m[92m   Compiling[0m serde v1.0.228
+[1m[92m   Compiling[0m tokio-macros v2.7.0
 [1m[92m   Compiling[0m serde_json v1.0.150
+[1m[92m   Compiling[0m ciborium-ll v0.2.2
 [1m[92m   Compiling[0m tokio v1.52.3
 [1m[92m   Compiling[0m rand_chacha v0.9.0
 [1m[92m   Compiling[0m futures-executor v0.3.32
+[1m[92m   Compiling[0m thiserror-impl v1.0.69
 [1m[92m   Compiling[0m futures-lite v1.13.0
+[1m[92m   Compiling[0m thiserror v1.0.69
 [1m[92m   Compiling[0m env_logger v0.10.2
+[1m[92m   Compiling[0m futures v0.3.32
 [1m[92m   Compiling[0m tokio-util v0.7.18
 [1m[92m   Compiling[0m uuid v1.23.3
-[1m[92m   Compiling[0m futures v0.3.32
 [1m[92m   Compiling[0m rand v0.9.4
 [1m[92m   Compiling[0m tinytemplate v1.2.1
 [1m[92m   Compiling[0m ciborium v0.2.2
-[1m[92m   Compiling[0m scc v3.7.3
+[1m[92m   Compiling[0m scc v3.8.3
 [1m[92m   Compiling[0m asynchronous-codec v0.7.0
-[1m[92m   Compiling[0m criterion v0.5.1
-[1m[92m   Compiling[0m zeromq v0.6.0-pre.1 (/home/runner/work/zmq.rs/zmq.rs)
+[1m[92m   Compiling[0m async-dispatcher-macros v0.1.1
+[1m[92m   Compiling[0m async-trait v0.1.89
 [1m[92m   Compiling[0m async-dispatcher v0.1.2
+[1m[92m   Compiling[0m zeromq v0.6.0-pre.1 (/home/runner/work/zmq.rs/zmq.rs)
 [1m[92m   Compiling[0m chrono v0.4.45
+[1m[92m   Compiling[0m criterion v0.5.1
 [1m[92m   Compiling[0m pretty_env_logger v0.5.0
 [1m[92m   Compiling[0m zmq2 v0.5.0
-[1m[92m    Finished[0m `bench` profile [optimized] target(s) in 1m 20s
-[1m[92m     Running[0m benches/compare_libzmq.rs (target/release/deps/compare_libzmq-15c22a9b60a0c6f8)
+[1m[92m    Finished[0m `bench` profile [optimized] target(s) in 55.65s
+[1m[92m     Running[0m benches/compare_libzmq.rs (target/release/deps/compare_libzmq-095bdf3646dac52f)
 Gnuplot not found, using plotters backend
 Benchmarking zmqrs/pub_sub/tcp/subs=1/16
 Benchmarking zmqrs/pub_sub/tcp/subs=1/16: Warming up for 2.0000 s
-Benchmarking zmqrs/pub_sub/tcp/subs=1/16: Collecting 20 samples in estimated 10.002 s (428k iterations)
+Benchmarking zmqrs/pub_sub/tcp/subs=1/16: Collecting 20 samples in estimated 10.004 s (416k iterations)
 Benchmarking zmqrs/pub_sub/tcp/subs=1/16: Analyzing
 zmqrs/pub_sub/tcp/subs=1/16
-                        time:   [23.359 µs 23.564 µs 23.773 µs]
-                        thrpt:  [657.26 KiB/s 663.07 KiB/s 668.89 KiB/s]
-Found 2 outliers among 20 measurements (10.00%)
-  2 (10.00%) high mild
+                        time:   [24.106 µs 24.259 µs 24.383 µs]
+                        thrpt:  [640.80 KiB/s 644.10 KiB/s 648.19 KiB/s]
 Benchmarking zmqrs/pub_sub/tcp/subs=1/256
 Benchmarking zmqrs/pub_sub/tcp/subs=1/256: Warming up for 2.0000 s
-Benchmarking zmqrs/pub_sub/tcp/subs=1/256: Collecting 20 samples in estimated 10.003 s (424k iterations)
+Benchmarking zmqrs/pub_sub/tcp/subs=1/256: Collecting 20 samples in estimated 10.001 s (409k iterations)
 Benchmarking zmqrs/pub_sub/tcp/subs=1/256: Analyzing
 zmqrs/pub_sub/tcp/subs=1/256
-                        time:   [23.580 µs 23.772 µs 23.994 µs]
-                        thrpt:  [10.175 MiB/s 10.270 MiB/s 10.354 MiB/s]
+                        time:   [23.801 µs 24.015 µs 24.216 µs]
+                        thrpt:  [10.082 MiB/s 10.166 MiB/s 10.258 MiB/s]
 Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high mild
+  1 (5.00%) low mild
 Benchmarking zmqrs/pub_sub/tcp/subs=1/4096
 Benchmarking zmqrs/pub_sub/tcp/subs=1/4096: Warming up for 2.0000 s
-Benchmarking zmqrs/pub_sub/tcp/subs=1/4096: Collecting 20 samples in estimated 10.002 s (467k iterations)
+Benchmarking zmqrs/pub_sub/tcp/subs=1/4096: Collecting 20 samples in estimated 10.001 s (461k iterations)
 Benchmarking zmqrs/pub_sub/tcp/subs=1/4096: Analyzing
 zmqrs/pub_sub/tcp/subs=1/4096
-                        time:   [21.275 µs 21.389 µs 21.491 µs]
-                        thrpt:  [181.77 MiB/s 182.63 MiB/s 183.60 MiB/s]
+                        time:   [21.668 µs 21.869 µs 22.053 µs]
+                        thrpt:  [177.13 MiB/s 178.62 MiB/s 180.27 MiB/s]
 Benchmarking zmqrs/pub_sub/tcp/subs=1/65536
 Benchmarking zmqrs/pub_sub/tcp/subs=1/65536: Warming up for 2.0000 s
-Benchmarking zmqrs/pub_sub/tcp/subs=1/65536: Collecting 20 samples in estimated 10.003 s (388k iterations)
+Benchmarking zmqrs/pub_sub/tcp/subs=1/65536: Collecting 20 samples in estimated 10.003 s (340k iterations)
 Benchmarking zmqrs/pub_sub/tcp/subs=1/65536: Analyzing
 zmqrs/pub_sub/tcp/subs=1/65536
-                        time:   [25.318 µs 25.472 µs 25.633 µs]
-                        thrpt:  [2.3811 GiB/s 2.3962 GiB/s 2.4107 GiB/s]
-Found 2 outliers among 20 measurements (10.00%)
-  1 (5.00%) low mild
-  1 (5.00%) high mild
+                        time:   [28.003 µs 28.475 µs 29.084 µs]
+                        thrpt:  [2.0986 GiB/s 2.1435 GiB/s 2.1796 GiB/s]
 
 Benchmarking zmqrs/pub_sub/tcp/subs=8/16
 Benchmarking zmqrs/pub_sub/tcp/subs=8/16: Warming up for 2.0000 s
-Benchmarking zmqrs/pub_sub/tcp/subs=8/16: Collecting 20 samples in estimated 10.001 s (207k iterations)
+Benchmarking zmqrs/pub_sub/tcp/subs=8/16: Collecting 20 samples in estimated 10.008 s (197k iterations)
 Benchmarking zmqrs/pub_sub/tcp/subs=8/16: Analyzing
 zmqrs/pub_sub/tcp/subs=8/16
-                        time:   [46.893 µs 47.366 µs 47.817 µs]
-                        thrpt:  [2.5529 MiB/s 2.5771 MiB/s 2.6032 MiB/s]
+                        time:   [50.357 µs 50.769 µs 51.322 µs]
+                        thrpt:  [2.3785 MiB/s 2.4044 MiB/s 2.4241 MiB/s]
 Found 2 outliers among 20 measurements (10.00%)
-  1 (5.00%) high mild
-  1 (5.00%) high severe
+  2 (10.00%) high mild
 Benchmarking zmqrs/pub_sub/tcp/subs=8/256
 Benchmarking zmqrs/pub_sub/tcp/subs=8/256: Warming up for 2.0000 s
-Benchmarking zmqrs/pub_sub/tcp/subs=8/256: Collecting 20 samples in estimated 10.001 s (205k iterations)
+Benchmarking zmqrs/pub_sub/tcp/subs=8/256: Collecting 20 samples in estimated 10.010 s (196k iterations)
 Benchmarking zmqrs/pub_sub/tcp/subs=8/256: Analyzing
 zmqrs/pub_sub/tcp/subs=8/256
-                        time:   [48.408 µs 48.898 µs 49.512 µs]
-                        thrpt:  [39.447 MiB/s 39.943 MiB/s 40.347 MiB/s]
-Found 2 outliers among 20 measurements (10.00%)
-  2 (10.00%) high severe
+                        time:   [51.044 µs 51.294 µs 51.585 µs]
+                        thrpt:  [37.862 MiB/s 38.077 MiB/s 38.263 MiB/s]
 Benchmarking zmqrs/pub_sub/tcp/subs=8/4096
 Benchmarking zmqrs/pub_sub/tcp/subs=8/4096: Warming up for 2.0000 s
-Benchmarking zmqrs/pub_sub/tcp/subs=8/4096: Collecting 20 samples in estimated 10.003 s (173k iterations)
+Benchmarking zmqrs/pub_sub/tcp/subs=8/4096: Collecting 20 samples in estimated 10.001 s (156k iterations)
 Benchmarking zmqrs/pub_sub/tcp/subs=8/4096: Analyzing
 zmqrs/pub_sub/tcp/subs=8/4096
-                        time:   [57.541 µs 58.291 µs 58.968 µs]
-                        thrpt:  [529.95 MiB/s 536.10 MiB/s 543.09 MiB/s]
+                        time:   [62.254 µs 63.069 µs 63.914 µs]
+                        thrpt:  [488.94 MiB/s 495.49 MiB/s 501.98 MiB/s]
+Found 2 outliers among 20 measurements (10.00%)
+  1 (5.00%) low mild
+  1 (5.00%) high mild
 Benchmarking zmqrs/pub_sub/tcp/subs=8/65536
 Benchmarking zmqrs/pub_sub/tcp/subs=8/65536: Warming up for 2.0000 s
-Benchmarking zmqrs/pub_sub/tcp/subs=8/65536: Collecting 20 samples in estimated 10.031 s (41k iterations)
+Benchmarking zmqrs/pub_sub/tcp/subs=8/65536: Collecting 20 samples in estimated 10.016 s (38k iterations)
 Benchmarking zmqrs/pub_sub/tcp/subs=8/65536: Analyzing
 zmqrs/pub_sub/tcp/subs=8/65536
-                        time:   [244.38 µs 246.24 µs 248.59 µs]
-                        thrpt:  [1.9642 GiB/s 1.9829 GiB/s 1.9981 GiB/s]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high mild
+                        time:   [259.10 µs 261.57 µs 264.42 µs]
+                        thrpt:  [1.8466 GiB/s 1.8667 GiB/s 1.8845 GiB/s]
 
 Benchmarking zmqrs/pub_sub/ipc/subs=1/16
 Benchmarking zmqrs/pub_sub/ipc/subs=1/16: Warming up for 2.0000 s
-Benchmarking zmqrs/pub_sub/ipc/subs=1/16: Collecting 20 samples in estimated 10.003 s (595k iterations)
+Benchmarking zmqrs/pub_sub/ipc/subs=1/16: Collecting 20 samples in estimated 10.001 s (578k iterations)
 Benchmarking zmqrs/pub_sub/ipc/subs=1/16: Analyzing
 zmqrs/pub_sub/ipc/subs=1/16
-                        time:   [16.825 µs 16.890 µs 16.956 µs]
-                        thrpt:  [921.52 KiB/s 925.11 KiB/s 928.68 KiB/s]
+                        time:   [17.319 µs 17.400 µs 17.491 µs]
+                        thrpt:  [893.31 KiB/s 897.99 KiB/s 902.20 KiB/s]
 Benchmarking zmqrs/pub_sub/ipc/subs=1/256
 Benchmarking zmqrs/pub_sub/ipc/subs=1/256: Warming up for 2.0000 s
-Benchmarking zmqrs/pub_sub/ipc/subs=1/256: Collecting 20 samples in estimated 10.002 s (598k iterations)
+Benchmarking zmqrs/pub_sub/ipc/subs=1/256: Collecting 20 samples in estimated 10.002 s (580k iterations)
 Benchmarking zmqrs/pub_sub/ipc/subs=1/256: Analyzing
 zmqrs/pub_sub/ipc/subs=1/256
-                        time:   [16.778 µs 16.851 µs 16.917 µs]
-                        thrpt:  [14.432 MiB/s 14.488 MiB/s 14.551 MiB/s]
+                        time:   [17.301 µs 17.468 µs 17.626 µs]
+                        thrpt:  [13.851 MiB/s 13.977 MiB/s 14.112 MiB/s]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
 Benchmarking zmqrs/pub_sub/ipc/subs=1/4096
 Benchmarking zmqrs/pub_sub/ipc/subs=1/4096: Warming up for 2.0000 s
-Benchmarking zmqrs/pub_sub/ipc/subs=1/4096: Collecting 20 samples in estimated 10.002 s (588k iterations)
+Benchmarking zmqrs/pub_sub/ipc/subs=1/4096: Collecting 20 samples in estimated 10.001 s (575k iterations)
 Benchmarking zmqrs/pub_sub/ipc/subs=1/4096: Analyzing
 zmqrs/pub_sub/ipc/subs=1/4096
-                        time:   [16.848 µs 16.952 µs 17.024 µs]
-                        thrpt:  [229.46 MiB/s 230.43 MiB/s 231.85 MiB/s]
+                        time:   [17.387 µs 17.568 µs 17.776 µs]
+                        thrpt:  [219.75 MiB/s 222.36 MiB/s 224.66 MiB/s]
 Benchmarking zmqrs/pub_sub/ipc/subs=1/65536
 Benchmarking zmqrs/pub_sub/ipc/subs=1/65536: Warming up for 2.0000 s
-Benchmarking zmqrs/pub_sub/ipc/subs=1/65536: Collecting 20 samples in estimated 10.004 s (307k iterations)
+Benchmarking zmqrs/pub_sub/ipc/subs=1/65536: Collecting 20 samples in estimated 10.007 s (291k iterations)
 Benchmarking zmqrs/pub_sub/ipc/subs=1/65536: Analyzing
 zmqrs/pub_sub/ipc/subs=1/65536
-                        time:   [32.503 µs 32.730 µs 33.006 µs]
-                        thrpt:  [1.8492 GiB/s 1.8648 GiB/s 1.8778 GiB/s]
+                        time:   [33.640 µs 33.989 µs 34.303 µs]
+                        thrpt:  [1.7793 GiB/s 1.7957 GiB/s 1.8143 GiB/s]
+Found 3 outliers among 20 measurements (15.00%)
+  1 (5.00%) low mild
+  2 (10.00%) high mild
 
 Benchmarking zmqrs/pub_sub/ipc/subs=8/16
 Benchmarking zmqrs/pub_sub/ipc/subs=8/16: Warming up for 2.0000 s
-Benchmarking zmqrs/pub_sub/ipc/subs=8/16: Collecting 20 samples in estimated 10.004 s (393k iterations)
+Benchmarking zmqrs/pub_sub/ipc/subs=8/16: Collecting 20 samples in estimated 10.002 s (384k iterations)
 Benchmarking zmqrs/pub_sub/ipc/subs=8/16: Analyzing
 zmqrs/pub_sub/ipc/subs=8/16
-                        time:   [24.908 µs 26.001 µs 27.640 µs]
-                        thrpt:  [4.4165 MiB/s 4.6947 MiB/s 4.9009 MiB/s]
-Found 5 outliers among 20 measurements (25.00%)
-  1 (5.00%) low mild
-  1 (5.00%) high mild
-  3 (15.00%) high severe
-Benchmarking zmqrs/pub_sub/ipc/subs=8/256
-Benchmarking zmqrs/pub_sub/ipc/subs=8/256: Warming up for 2.0000 s
-Benchmarking zmqrs/pub_sub/ipc/subs=8/256: Collecting 20 samples in estimated 10.002 s (388k iterations)
-Benchmarking zmqrs/pub_sub/ipc/subs=8/256: Analyzing
-zmqrs/pub_sub/ipc/subs=8/256
-                        time:   [25.957 µs 26.203 µs 26.510 µs]
-                        thrpt:  [73.676 MiB/s 74.538 MiB/s 75.244 MiB/s]
-Found 3 outliers among 20 measurements (15.00%)
-  1 (5.00%) low mild
+                        time:   [25.825 µs 26.267 µs 26.917 µs]
+                        thrpt:  [4.5351 MiB/s 4.6474 MiB/s 4.7269 MiB/s]
+Found 2 outliers among 20 measurements (10.00%)
   1 (5.00%) high mild
   1 (5.00%) high severe
+Benchmarking zmqrs/pub_sub/ipc/subs=8/256
+Benchmarking zmqrs/pub_sub/ipc/subs=8/256: Warming up for 2.0000 s
+Benchmarking zmqrs/pub_sub/ipc/subs=8/256: Collecting 20 samples in estimated 10.004 s (371k iterations)
+Benchmarking zmqrs/pub_sub/ipc/subs=8/256: Analyzing
+zmqrs/pub_sub/ipc/subs=8/256
+                        time:   [26.913 µs 27.272 µs 27.594 µs]
+                        thrpt:  [70.782 MiB/s 71.616 MiB/s 72.572 MiB/s]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
 Benchmarking zmqrs/pub_sub/ipc/subs=8/4096
 Benchmarking zmqrs/pub_sub/ipc/subs=8/4096: Warming up for 2.0000 s
-Benchmarking zmqrs/pub_sub/ipc/subs=8/4096: Collecting 20 samples in estimated 10.003 s (288k iterations)
+Benchmarking zmqrs/pub_sub/ipc/subs=8/4096: Collecting 20 samples in estimated 10.002 s (265k iterations)
 Benchmarking zmqrs/pub_sub/ipc/subs=8/4096: Analyzing
 zmqrs/pub_sub/ipc/subs=8/4096
-                        time:   [33.301 µs 33.845 µs 34.593 µs]
-                        thrpt:  [903.36 MiB/s 923.33 MiB/s 938.41 MiB/s]
+                        time:   [34.381 µs 35.203 µs 36.639 µs]
+                        thrpt:  [852.93 MiB/s 887.71 MiB/s 908.92 MiB/s]
 Found 1 outliers among 20 measurements (5.00%)
   1 (5.00%) high severe
 Benchmarking zmqrs/pub_sub/ipc/subs=8/65536
 Benchmarking zmqrs/pub_sub/ipc/subs=8/65536: Warming up for 2.0000 s
-Benchmarking zmqrs/pub_sub/ipc/subs=8/65536: Collecting 20 samples in estimated 10.005 s (47k iterations)
+Benchmarking zmqrs/pub_sub/ipc/subs=8/65536: Collecting 20 samples in estimated 10.017 s (46k iterations)
 Benchmarking zmqrs/pub_sub/ipc/subs=8/65536: Analyzing
 zmqrs/pub_sub/ipc/subs=8/65536
-                        time:   [211.53 µs 213.22 µs 215.41 µs]
-                        thrpt:  [2.2668 GiB/s 2.2900 GiB/s 2.3084 GiB/s]
+                        time:   [217.82 µs 219.15 µs 220.73 µs]
+                        thrpt:  [2.2121 GiB/s 2.2281 GiB/s 2.2417 GiB/s]
 
