@@ -1,5 +1,5 @@
 ### Runner
-- date: 2026-06-28T04:03:33Z
+- date: 2026-07-05T03:38:45Z
 - commit: 4141f43a03b84fe825295b197823a2c39c6a0c7b
 - ref: refs/heads/v1-bench-harness
 - runner: ubuntu-24.04-arm
@@ -15,10 +15,10 @@
 
 ### Memory
 -                total        used        free      shared  buff/cache   available
-- Mem:            15Gi       1.1Gi        13Gi        46Mi       1.7Gi        14Gi
+- Mem:            15Gi       1.2Gi        13Gi        46Mi       1.7Gi        14Gi
 
 ### Kernel
-- Linux runnervmjddhd 6.17.0-1018-azure #18~24.04.1-Ubuntu SMP Thu May 28 16:41:33 UTC 2026 aarch64 aarch64 aarch64 GNU/Linux
+- Linux runnervmqymkm 6.17.0-1018-azure #18~24.04.1-Ubuntu SMP Thu May 28 16:41:33 UTC 2026 aarch64 aarch64 aarch64 GNU/Linux
 
 ### libzmq
 - Package: libzmq3-dev
