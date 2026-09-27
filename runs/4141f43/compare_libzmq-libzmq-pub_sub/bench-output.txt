@@ -1,139 +1,139 @@
 [1m[92m    Updating[0m crates.io index
 [1m[92m     Locking[0m 185 packages to latest compatible versions
 [1m[92m      Adding[0m criterion v0.5.1 [1m[33m(available: v0.8.2)[0m
-[1m[92m      Adding[0m rand v0.9.5 [1m[33m(available: v0.10.2)[0m
-[1m[92m      Adding[0m thiserror v1.0.69 [1m[33m(available: v2.0.20)[0m
+[1m[92m      Adding[0m rand v0.9.5 [1m[33m(available: v0.10.3)[0m
+[1m[92m      Adding[0m thiserror v1.0.69 [1m[33m(available: v2.0.21)[0m
 [1m[92m Downloading[0m crates ...
-[1m[92m  Downloaded[0m async-dispatcher-macros v0.1.1
-[1m[92m  Downloaded[0m async-dispatcher v0.1.2
-[1m[92m  Downloaded[0m anes v0.1.6
-[1m[92m  Downloaded[0m anstyle v1.0.14
-[1m[92m  Downloaded[0m ciborium-io v0.2.2
-[1m[92m  Downloaded[0m futures-core v0.3.34
-[1m[92m  Downloaded[0m futures-task v0.3.34
-[1m[92m  Downloaded[0m plotters-svg v0.3.7
-[1m[92m  Downloaded[0m crossbeam-deque v0.8.8
-[1m[92m  Downloaded[0m async-trait v0.1.92
-[1m[92m  Downloaded[0m crossbeam-queue v0.3.14
-[1m[92m  Downloaded[0m dircpy v0.3.20
-[1m[92m  Downloaded[0m rand_chacha v0.9.0
-[1m[92m  Downloaded[0m find-msvc-tools v0.1.13
-[1m[92m  Downloaded[0m mio v1.2.3
-[1m[92m  Downloaded[0m hashbrown v0.17.1
-[1m[92m  Downloaded[0m aho-corasick v1.1.5
-[1m[92m  Downloaded[0m futures-io v0.3.34
-[1m[92m  Downloaded[0m slab v0.4.12
-[1m[92m  Downloaded[0m heck v0.5.0
-[1m[92m  Downloaded[0m errno v0.3.14
-[1m[92m  Downloaded[0m signal-hook-registry v1.4.8
-[1m[92m  Downloaded[0m syn v2.0.119
-[1m[92m  Downloaded[0m smallvec v1.16.1
-[1m[92m  Downloaded[0m socket2 v0.6.5
-[1m[92m  Downloaded[0m toml_datetime v0.6.11
-[1m[92m  Downloaded[0m half v2.7.1
-[1m[92m  Downloaded[0m itertools v0.10.5
-[1m[92m  Downloaded[0m env_logger v0.10.2
-[1m[92m  Downloaded[0m termcolor v1.4.1
-[1m[92m  Downloaded[0m cc v1.4.7
-[1m[92m  Downloaded[0m tokio-macros v2.7.2
+[1m[92m  Downloaded[0m smallvec v1.16.2
 [1m[92m  Downloaded[0m zmij v1.0.23
-[1m[92m  Downloaded[0m libc v0.2.189
-[1m[92m  Downloaded[0m waker-fn v1.2.0
-[1m[92m  Downloaded[0m zmq-sys2 v0.3.0
-[1m[92m  Downloaded[0m thiserror-impl v1.0.69
-[1m[92m  Downloaded[0m futures-channel v0.3.34
-[1m[92m  Downloaded[0m indexmap v2.14.2
-[1m[92m  Downloaded[0m itoa v1.0.18
-[1m[92m  Downloaded[0m parking v2.2.1
-[1m[92m  Downloaded[0m cfg-expr v0.15.8
-[1m[92m  Downloaded[0m iana-time-zone v0.1.65
-[1m[92m  Downloaded[0m jwalk v0.8.1
-[1m[92m  Downloaded[0m cast v0.3.0
-[1m[92m  Downloaded[0m chrono v0.4.45
-[1m[92m  Downloaded[0m futures-lite v1.13.0
-[1m[92m  Downloaded[0m rayon-core v1.13.0
-[1m[92m  Downloaded[0m same-file v1.0.6
-[1m[92m  Downloaded[0m ciborium-ll v0.2.2
-[1m[92m  Downloaded[0m futures v0.3.34
-[1m[92m  Downloaded[0m getrandom v0.4.3
-[1m[92m  Downloaded[0m version-compare v0.2.1
-[1m[92m  Downloaded[0m thiserror v1.0.69
-[1m[92m  Downloaded[0m tinytemplate v1.2.1
-[1m[92m  Downloaded[0m walkdir v2.5.0
-[1m[92m  Downloaded[0m target-lexicon v0.12.16
-[1m[92m  Downloaded[0m criterion v0.5.1
-[1m[92m  Downloaded[0m crossbeam-epoch v0.9.21
-[1m[92m  Downloaded[0m futures-sink v0.3.34
-[1m[92m  Downloaded[0m jobserver v0.1.35
-[1m[92m  Downloaded[0m parking_lot_core v0.9.12
-[1m[92m  Downloaded[0m plotters-backend v0.3.7
-[1m[92m  Downloaded[0m serde v1.0.229
-[1m[92m  Downloaded[0m serde_spanned v0.6.9
-[1m[92m  Downloaded[0m bytes v1.12.1
-[1m[92m  Downloaded[0m clap v4.6.7
-[1m[92m  Downloaded[0m criterion-plot v0.5.0
-[1m[92m  Downloaded[0m equivalent v1.0.2
-[1m[92m  Downloaded[0m fastrand v1.9.0
-[1m[92m  Downloaded[0m futures-executor v0.3.34
-[1m[92m  Downloaded[0m futures-macro v0.3.34
-[1m[92m  Downloaded[0m num-traits v0.2.19
-[1m[92m  Downloaded[0m regex-syntax v0.8.11
-[1m[92m  Downloaded[0m serde_core v1.0.229
-[1m[92m  Downloaded[0m toml v0.8.23
-[1m[92m  Downloaded[0m system-deps v6.2.2
-[1m[92m  Downloaded[0m unicode-ident v1.0.26
-[1m[92m  Downloaded[0m uuid v1.26.1
-[1m[92m  Downloaded[0m lock_api v0.4.14
-[1m[92m  Downloaded[0m log v0.4.34
-[1m[92m  Downloaded[0m ppv-lite86 v0.2.21
-[1m[92m  Downloaded[0m quote v1.0.47
-[1m[92m  Downloaded[0m scc v3.8.8
-[1m[92m  Downloaded[0m sdd v4.8.11
-[1m[92m  Downloaded[0m shlex v2.0.1
-[1m[92m  Downloaded[0m bitflags v1.3.2
-[1m[92m  Downloaded[0m futures-util v0.3.34
-[1m[92m  Downloaded[0m rand_core v0.9.5
-[1m[92m  Downloaded[0m zmq2 v0.5.0
-[1m[92m  Downloaded[0m asynchronous-codec v0.7.0
-[1m[92m  Downloaded[0m cfg-if v1.0.5
-[1m[92m  Downloaded[0m toml_edit v0.22.27
-[1m[92m  Downloaded[0m zerocopy-derive v0.8.57
-[1m[92m  Downloaded[0m hex v0.4.3
-[1m[92m  Downloaded[0m either v1.18.0
-[1m[92m  Downloaded[0m crossbeam v0.8.5
+[1m[92m  Downloaded[0m signal-hook-registry v1.4.8
+[1m[92m  Downloaded[0m async-trait v0.1.92
+[1m[92m  Downloaded[0m socket2 v0.6.5
 [1m[92m  Downloaded[0m tokio-util v0.7.19
+[1m[92m  Downloaded[0m slab v0.4.12
+[1m[92m  Downloaded[0m termcolor v1.4.1
+[1m[92m  Downloaded[0m futures-executor v0.3.34
+[1m[92m  Downloaded[0m syn v2.0.119
+[1m[92m  Downloaded[0m tokio-macros v2.7.2
+[1m[92m  Downloaded[0m waker-fn v1.2.0
+[1m[92m  Downloaded[0m walkdir v2.5.0
 [1m[92m  Downloaded[0m winnow v0.7.15
-[1m[92m  Downloaded[0m syn v3.0.6
-[1m[92m  Downloaded[0m zerocopy v0.8.57
-[1m[92m  Downloaded[0m getrandom v0.3.4
-[1m[92m  Downloaded[0m is-terminal v0.4.17
-[1m[92m  Downloaded[0m scopeguard v1.2.0
-[1m[92m  Downloaded[0m oorandom v11.1.5
-[1m[92m  Downloaded[0m pkg-config v0.3.34
-[1m[92m  Downloaded[0m pin-project-lite v0.2.17
-[1m[92m  Downloaded[0m clap_lex v1.1.1
-[1m[92m  Downloaded[0m humantime v2.4.0
-[1m[92m  Downloaded[0m once_cell v1.21.4
-[1m[92m  Downloaded[0m pretty_env_logger v0.5.0
+[1m[92m  Downloaded[0m target-lexicon v0.12.16
+[1m[92m  Downloaded[0m toml v0.8.23
+[1m[92m  Downloaded[0m tinytemplate v1.2.1
+[1m[92m  Downloaded[0m half v2.7.1
+[1m[92m  Downloaded[0m anes v0.1.6
 [1m[92m  Downloaded[0m async-task v4.7.1
-[1m[92m  Downloaded[0m ciborium v0.2.2
-[1m[92m  Downloaded[0m parking_lot v0.12.5
-[1m[92m  Downloaded[0m regex v1.13.1
-[1m[92m  Downloaded[0m saa v5.6.2
-[1m[92m  Downloaded[0m serde_derive v1.0.229
-[1m[92m  Downloaded[0m serde_json v1.0.151
 [1m[92m  Downloaded[0m proc-macro2 v1.0.107
-[1m[92m  Downloaded[0m rand v0.9.5
-[1m[92m  Downloaded[0m rayon v1.12.0
-[1m[92m  Downloaded[0m crossbeam-utils v0.8.23
+[1m[92m  Downloaded[0m zmq2 v0.5.0
+[1m[92m  Downloaded[0m toml_edit v0.22.27
+[1m[92m  Downloaded[0m unicode-ident v1.0.26
+[1m[92m  Downloaded[0m system-deps v6.2.2
+[1m[92m  Downloaded[0m thiserror v1.0.69
+[1m[92m  Downloaded[0m regex-syntax v0.8.11
+[1m[92m  Downloaded[0m version-compare v0.2.1
+[1m[92m  Downloaded[0m uuid v1.26.1
+[1m[92m  Downloaded[0m zmq-sys2 v0.3.0
+[1m[92m  Downloaded[0m toml_datetime v0.6.11
+[1m[92m  Downloaded[0m thiserror-impl v1.0.69
+[1m[92m  Downloaded[0m syn v3.0.6
+[1m[92m  Downloaded[0m async-dispatcher-macros v0.1.1
+[1m[92m  Downloaded[0m zerocopy v0.8.59
+[1m[92m  Downloaded[0m aho-corasick v1.1.5
+[1m[92m  Downloaded[0m anstyle v1.0.14
+[1m[92m  Downloaded[0m tokio v1.53.1
+[1m[92m  Downloaded[0m async-dispatcher v0.1.2
+[1m[92m  Downloaded[0m ciborium v0.2.2
+[1m[92m  Downloaded[0m zeromq-src v0.2.6+4.3.4
+[1m[92m  Downloaded[0m zerocopy-derive v0.8.59
+[1m[92m  Downloaded[0m humantime v2.4.0
+[1m[92m  Downloaded[0m serde_derive v1.0.229
+[1m[92m  Downloaded[0m parking_lot v0.12.5
+[1m[92m  Downloaded[0m parking_lot_core v0.9.12
+[1m[92m  Downloaded[0m iana-time-zone v0.1.65
+[1m[92m  Downloaded[0m serde_spanned v0.6.9
+[1m[92m  Downloaded[0m futures-channel v0.3.34
+[1m[92m  Downloaded[0m once_cell v1.21.4
+[1m[92m  Downloaded[0m plotters-backend v0.3.7
+[1m[92m  Downloaded[0m crossbeam-queue v0.3.14
 [1m[92m  Downloaded[0m crossbeam-channel v0.5.17
+[1m[92m  Downloaded[0m pkg-config v0.3.34
+[1m[92m  Downloaded[0m regex-automata v0.4.18
+[1m[92m  Downloaded[0m rayon-core v1.13.0
+[1m[92m  Downloaded[0m getrandom v0.3.4
+[1m[92m  Downloaded[0m ciborium-ll v0.2.2
+[1m[92m  Downloaded[0m bytes v1.12.1
+[1m[92m  Downloaded[0m crossbeam-utils v0.8.23
+[1m[92m  Downloaded[0m clap_lex v1.1.1
+[1m[92m  Downloaded[0m pin-project-lite v0.2.17
+[1m[92m  Downloaded[0m futures-sink v0.3.34
+[1m[92m  Downloaded[0m quote v1.0.47
+[1m[92m  Downloaded[0m equivalent v1.0.2
+[1m[92m  Downloaded[0m log v0.4.34
+[1m[92m  Downloaded[0m hashbrown v0.17.1
+[1m[92m  Downloaded[0m itoa v1.0.18
+[1m[92m  Downloaded[0m rand v0.9.5
+[1m[92m  Downloaded[0m scc v3.8.8
+[1m[92m  Downloaded[0m cfg-expr v0.15.8
+[1m[92m  Downloaded[0m crossbeam-epoch v0.9.21
+[1m[92m  Downloaded[0m futures v0.3.34
+[1m[92m  Downloaded[0m asynchronous-codec v0.7.0
+[1m[92m  Downloaded[0m rand_core v0.9.5
+[1m[92m  Downloaded[0m same-file v1.0.6
+[1m[92m  Downloaded[0m scopeguard v1.2.0
+[1m[92m  Downloaded[0m fastrand v1.9.0
+[1m[92m  Downloaded[0m jobserver v0.1.35
+[1m[92m  Downloaded[0m ppv-lite86 v0.2.21
+[1m[92m  Downloaded[0m chrono v0.4.45
+[1m[92m  Downloaded[0m ciborium-io v0.2.2
+[1m[92m  Downloaded[0m criterion-plot v0.5.0
+[1m[92m  Downloaded[0m itertools v0.10.5
+[1m[92m  Downloaded[0m oorandom v11.1.5
+[1m[92m  Downloaded[0m bitflags v1.3.2
+[1m[92m  Downloaded[0m errno v0.3.14
+[1m[92m  Downloaded[0m hex v0.4.3
+[1m[92m  Downloaded[0m futures-lite v1.13.0
+[1m[92m  Downloaded[0m clap v4.6.7
+[1m[92m  Downloaded[0m futures-io v0.3.34
+[1m[92m  Downloaded[0m mio v1.2.3
+[1m[92m  Downloaded[0m lock_api v0.4.14
+[1m[92m  Downloaded[0m parking v2.2.1
+[1m[92m  Downloaded[0m rand_chacha v0.9.0
+[1m[92m  Downloaded[0m cast v0.3.0
+[1m[92m  Downloaded[0m futures-core v0.3.34
+[1m[92m  Downloaded[0m futures-macro v0.3.34
+[1m[92m  Downloaded[0m crossbeam v0.8.5
+[1m[92m  Downloaded[0m heck v0.5.0
+[1m[92m  Downloaded[0m pretty_env_logger v0.5.0
+[1m[92m  Downloaded[0m autocfg v1.5.1
+[1m[92m  Downloaded[0m crossbeam-deque v0.8.8
+[1m[92m  Downloaded[0m is-terminal v0.4.17
+[1m[92m  Downloaded[0m jwalk v0.8.1
+[1m[92m  Downloaded[0m plotters-svg v0.3.7
+[1m[92m  Downloaded[0m cfg-if v1.0.5
+[1m[92m  Downloaded[0m either v1.18.0
+[1m[92m  Downloaded[0m serde_core v1.0.229
+[1m[92m  Downloaded[0m shlex v2.0.1
+[1m[92m  Downloaded[0m dircpy v0.3.20
+[1m[92m  Downloaded[0m find-msvc-tools v0.1.14
+[1m[92m  Downloaded[0m futures-task v0.3.34
+[1m[92m  Downloaded[0m saa v5.6.2
+[1m[92m  Downloaded[0m env_logger v0.10.2
+[1m[92m  Downloaded[0m serde_json v1.0.151
+[1m[92m  Downloaded[0m getrandom v0.4.3
+[1m[92m  Downloaded[0m num-traits v0.2.19
+[1m[92m  Downloaded[0m futures-util v0.3.34
+[1m[92m  Downloaded[0m sdd v4.8.11
+[1m[92m  Downloaded[0m serde v1.0.229
+[1m[92m  Downloaded[0m cc v1.5.1
 [1m[92m  Downloaded[0m memchr v2.8.3
+[1m[92m  Downloaded[0m criterion v0.5.1
+[1m[92m  Downloaded[0m indexmap v2.14.2
+[1m[92m  Downloaded[0m regex v1.13.1
 [1m[92m  Downloaded[0m plotters v0.3.7
 [1m[92m  Downloaded[0m clap_builder v4.6.7
-[1m[92m  Downloaded[0m autocfg v1.5.1
-[1m[92m  Downloaded[0m zeromq-src v0.2.6+4.3.4
-[1m[92m  Downloaded[0m tokio v1.53.1
-[1m[92m  Downloaded[0m regex-automata v0.4.18
+[1m[92m  Downloaded[0m rayon v1.12.0
+[1m[92m  Downloaded[0m libc v0.2.189
 [1m[92m   Compiling[0m libc v0.2.189
 [1m[92m   Compiling[0m proc-macro2 v1.0.107
 [1m[92m   Compiling[0m quote v1.0.47
@@ -141,27 +141,27 @@
 [1m[92m   Compiling[0m crossbeam-utils v0.8.23
 [1m[92m   Compiling[0m crossbeam-epoch v0.9.21
 [1m[92m   Compiling[0m crossbeam-deque v0.8.8
-[1m[92m   Compiling[0m cfg-if v1.0.5
-[1m[92m   Compiling[0m rayon-core v1.13.0
 [1m[92m   Compiling[0m memchr v2.8.3
+[1m[92m   Compiling[0m syn v3.0.6
+[1m[92m   Compiling[0m rayon-core v1.13.0
+[1m[92m   Compiling[0m cfg-if v1.0.5
+[1m[92m   Compiling[0m syn v2.0.119
 [1m[92m   Compiling[0m serde_core v1.0.229
 [1m[92m   Compiling[0m serde v1.0.229
-[1m[92m   Compiling[0m syn v3.0.6
-[1m[92m   Compiling[0m syn v2.0.119
-[1m[92m   Compiling[0m zerocopy v0.8.57
-[1m[92m   Compiling[0m crossbeam-channel v0.5.17
+[1m[92m   Compiling[0m zerocopy v0.8.59
 [1m[92m   Compiling[0m crossbeam-queue v0.3.14
-[1m[92m   Compiling[0m equivalent v1.0.2
-[1m[92m   Compiling[0m futures-core v0.3.34
-[1m[92m   Compiling[0m target-lexicon v0.12.16
+[1m[92m   Compiling[0m crossbeam-channel v0.5.17
 [1m[92m   Compiling[0m hashbrown v0.17.1
-[1m[92m   Compiling[0m either v1.18.0
+[1m[92m   Compiling[0m futures-core v0.3.34
 [1m[92m   Compiling[0m pin-project-lite v0.2.17
+[1m[92m   Compiling[0m target-lexicon v0.12.16
+[1m[92m   Compiling[0m either v1.18.0
+[1m[92m   Compiling[0m equivalent v1.0.2
 [1m[92m   Compiling[0m rayon v1.12.0
+[1m[92m   Compiling[0m indexmap v2.14.2
+[1m[92m   Compiling[0m zerocopy-derive v0.8.59
 [1m[92m   Compiling[0m toml_datetime v0.6.11
 [1m[92m   Compiling[0m serde_spanned v0.6.9
-[1m[92m   Compiling[0m indexmap v2.14.2
-[1m[92m   Compiling[0m zerocopy-derive v0.8.57
 [1m[92m   Compiling[0m crossbeam v0.8.5
 [1m[92m   Compiling[0m futures-io v0.3.34
 [1m[92m   Compiling[0m same-file v1.0.6
@@ -169,224 +169,233 @@
 [1m[92m   Compiling[0m jobserver v0.1.35
 [1m[92m   Compiling[0m jwalk v0.8.1
 [1m[92m   Compiling[0m walkdir v2.5.0
-[1m[92m   Compiling[0m log v0.4.34
+[1m[92m   Compiling[0m find-msvc-tools v0.1.14
 [1m[92m   Compiling[0m toml_edit v0.22.27
-[1m[92m   Compiling[0m shlex v2.0.1
 [1m[92m   Compiling[0m futures-sink v0.3.34
-[1m[92m   Compiling[0m smallvec v1.16.1
-[1m[92m   Compiling[0m find-msvc-tools v0.1.13
 [1m[92m   Compiling[0m autocfg v1.5.1
-[1m[92m   Compiling[0m cfg-expr v0.15.8
+[1m[92m   Compiling[0m smallvec v1.16.2
+[1m[92m   Compiling[0m log v0.4.34
+[1m[92m   Compiling[0m shlex v2.0.1
+[1m[92m   Compiling[0m cc v1.5.1
 [1m[92m   Compiling[0m num-traits v0.2.19
-[1m[92m   Compiling[0m cc v1.4.7
 [1m[92m   Compiling[0m dircpy v0.3.20
-[1m[92m   Compiling[0m aho-corasick v1.1.5
+[1m[92m   Compiling[0m cfg-expr v0.15.8
 [1m[92m   Compiling[0m toml v0.8.23
-[1m[92m   Compiling[0m regex-syntax v0.8.11
-[1m[92m   Compiling[0m version-compare v0.2.1
-[1m[92m   Compiling[0m heck v0.5.0
+[1m[92m   Compiling[0m aho-corasick v1.1.5
 [1m[92m   Compiling[0m pkg-config v0.3.34
+[1m[92m   Compiling[0m heck v0.5.0
 [1m[92m   Compiling[0m parking_lot_core v0.9.12
 [1m[92m   Compiling[0m getrandom v0.3.4
+[1m[92m   Compiling[0m regex-syntax v0.8.11
+[1m[92m   Compiling[0m version-compare v0.2.1
 [1m[92m   Compiling[0m system-deps v6.2.2
 [1m[92m   Compiling[0m zeromq-src v0.2.6+4.3.4
-[1m[92m   Compiling[0m regex-automata v0.4.18
 [1m[92m   Compiling[0m futures-channel v0.3.34
 [1m[92m   Compiling[0m futures-macro v0.3.34
-[1m[92m   Compiling[0m zmij v1.0.23
-[1m[92m   Compiling[0m scopeguard v1.2.0
+[1m[92m   Compiling[0m regex-automata v0.4.18
 [1m[92m   Compiling[0m futures-task v0.3.34
+[1m[92m   Compiling[0m zmij v1.0.23
 [1m[92m   Compiling[0m slab v0.4.12
+[1m[92m   Compiling[0m scopeguard v1.2.0
+[1m[92m   Compiling[0m lock_api v0.4.14
 [1m[92m   Compiling[0m futures-util v0.3.34
 [1m[92m   Compiling[0m regex v1.13.1
-[1m[92m   Compiling[0m lock_api v0.4.14
 [1m[92m   Compiling[0m zmq-sys2 v0.3.0
 [1m[92m   Compiling[0m serde_derive v1.0.229
 [1m[92m   Compiling[0m errno v0.3.14
+[1m[92m   Compiling[0m getrandom v0.4.3
 [1m[92m   Compiling[0m serde_json v1.0.151
 [1m[92m   Compiling[0m bytes v1.12.1
-[1m[92m   Compiling[0m getrandom v0.4.3
 [1m[92m   Compiling[0m signal-hook-registry v1.4.8
 [1m[92m   Compiling[0m rand_core v0.9.5
 [1m[92m   Compiling[0m parking_lot v0.12.5
-[1m[92m   Compiling[0m ppv-lite86 v0.2.21
 [1m[92m   Compiling[0m half v2.7.1
+[1m[92m   Compiling[0m ppv-lite86 v0.2.21
 [1m[92m   Compiling[0m tokio-macros v2.7.2
 [1m[92m   Compiling[0m socket2 v0.6.5
-[1m[92m   Compiling[0m is-terminal v0.4.17
 [1m[92m   Compiling[0m mio v1.2.3
+[1m[92m   Compiling[0m is-terminal v0.4.17
 [1m[92m   Compiling[0m saa v5.6.2
-[1m[92m   Compiling[0m thiserror v1.0.69
-[1m[92m   Compiling[0m anstyle v1.0.14
 [1m[92m   Compiling[0m plotters-backend v0.3.7
+[1m[92m   Compiling[0m anstyle v1.0.14
 [1m[92m   Compiling[0m clap_lex v1.1.1
+[1m[92m   Compiling[0m thiserror v1.0.69
 [1m[92m   Compiling[0m ciborium-io v0.2.2
 [1m[92m   Compiling[0m itoa v1.0.18
 [1m[92m   Compiling[0m ciborium-ll v0.2.2
-[1m[92m   Compiling[0m plotters-svg v0.3.7
 [1m[92m   Compiling[0m clap_builder v4.6.7
 [1m[92m   Compiling[0m sdd v4.8.11
+[1m[92m   Compiling[0m plotters-svg v0.3.7
 [1m[92m   Compiling[0m tokio v1.53.1
 [1m[92m   Compiling[0m rand_chacha v0.9.0
 [1m[92m   Compiling[0m itertools v0.10.5
 [1m[92m   Compiling[0m futures-executor v0.3.34
 [1m[92m   Compiling[0m thiserror-impl v1.0.69
-[1m[92m   Compiling[0m parking v2.2.1
-[1m[92m   Compiling[0m zmq2 v0.5.0
-[1m[92m   Compiling[0m humantime v2.4.0
-[1m[92m   Compiling[0m fastrand v1.9.0
 [1m[92m   Compiling[0m waker-fn v1.2.0
+[1m[92m   Compiling[0m fastrand v1.9.0
 [1m[92m   Compiling[0m cast v0.3.0
 [1m[92m   Compiling[0m once_cell v1.21.4
+[1m[92m   Compiling[0m humantime v2.4.0
 [1m[92m   Compiling[0m termcolor v1.4.1
-[1m[92m   Compiling[0m criterion-plot v0.5.0
+[1m[92m   Compiling[0m zmq2 v0.5.0
+[1m[92m   Compiling[0m parking v2.2.1
 [1m[92m   Compiling[0m env_logger v0.10.2
 [1m[92m   Compiling[0m futures-lite v1.13.0
-[1m[92m   Compiling[0m tokio-util v0.7.19
+[1m[92m   Compiling[0m criterion-plot v0.5.0
 [1m[92m   Compiling[0m futures v0.3.34
+[1m[92m   Compiling[0m tokio-util v0.7.19
 [1m[92m   Compiling[0m uuid v1.26.1
 [1m[92m   Compiling[0m rand v0.9.5
 [1m[92m   Compiling[0m scc v3.8.8
+[1m[92m   Compiling[0m plotters v0.3.7
 [1m[92m   Compiling[0m clap v4.6.7
 [1m[92m   Compiling[0m tinytemplate v1.2.1
-[1m[92m   Compiling[0m plotters v0.3.7
 [1m[92m   Compiling[0m ciborium v0.2.2
 [1m[92m   Compiling[0m asynchronous-codec v0.7.0
 [1m[92m   Compiling[0m async-trait v0.1.92
 [1m[92m   Compiling[0m async-dispatcher-macros v0.1.1
-[1m[92m   Compiling[0m bitflags v1.3.2
-[1m[92m   Compiling[0m oorandom v11.1.5
 [1m[92m   Compiling[0m async-task v4.7.1
-[1m[92m   Compiling[0m iana-time-zone v0.1.65
 [1m[92m   Compiling[0m anes v0.1.6
+[1m[92m   Compiling[0m oorandom v11.1.5
+[1m[92m   Compiling[0m iana-time-zone v0.1.65
+[1m[92m   Compiling[0m bitflags v1.3.2
 [1m[92m   Compiling[0m criterion v0.5.1
-[1m[92m   Compiling[0m async-dispatcher v0.1.2
-[1m[92m   Compiling[0m zeromq v0.6.0-pre.1 (/home/runner/work/zmq.rs/zmq.rs)
 [1m[92m   Compiling[0m chrono v0.4.45
+[1m[92m   Compiling[0m zeromq v0.6.0-pre.1 (/home/runner/work/zmq.rs/zmq.rs)
+[1m[92m   Compiling[0m async-dispatcher v0.1.2
 [1m[92m   Compiling[0m pretty_env_logger v0.5.0
 [1m[92m   Compiling[0m hex v0.4.3
-[1m[92m    Finished[0m `bench` profile [optimized] target(s) in 1m 08s
-[1m[92m     Running[0m benches/compare_libzmq.rs (target/release/deps/compare_libzmq-cff9b4471ba8c87c)
+[1m[92m    Finished[0m `bench` profile [optimized] target(s) in 55.95s
+[1m[92m     Running[0m benches/compare_libzmq.rs (target/release/deps/compare_libzmq-e0311eba5fafae3d)
 Gnuplot not found, using plotters backend
 Benchmarking libzmq/pub_sub/tcp/subs=1/16
 Benchmarking libzmq/pub_sub/tcp/subs=1/16: Warming up for 2.0000 s
-Benchmarking libzmq/pub_sub/tcp/subs=1/16: Collecting 20 samples in estimated 10.003 s (257k iterations)
+Benchmarking libzmq/pub_sub/tcp/subs=1/16: Collecting 20 samples in estimated 10.007 s (247k iterations)
 Benchmarking libzmq/pub_sub/tcp/subs=1/16: Analyzing
 libzmq/pub_sub/tcp/subs=1/16
-                        time:   [38.323 µs 38.480 µs 38.635 µs]
-                        thrpt:  [404.42 KiB/s 406.06 KiB/s 407.72 KiB/s]
+                        time:   [40.122 µs 40.298 µs 40.487 µs]
+                        thrpt:  [385.93 KiB/s 387.74 KiB/s 389.44 KiB/s]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
 Benchmarking libzmq/pub_sub/tcp/subs=1/256
 Benchmarking libzmq/pub_sub/tcp/subs=1/256: Warming up for 2.0000 s
-Benchmarking libzmq/pub_sub/tcp/subs=1/256: Collecting 20 samples in estimated 10.003 s (251k iterations)
+Benchmarking libzmq/pub_sub/tcp/subs=1/256: Collecting 20 samples in estimated 10.005 s (242k iterations)
 Benchmarking libzmq/pub_sub/tcp/subs=1/256: Analyzing
 libzmq/pub_sub/tcp/subs=1/256
-                        time:   [39.643 µs 39.823 µs 39.993 µs]
-                        thrpt:  [6.1046 MiB/s 6.1306 MiB/s 6.1584 MiB/s]
+                        time:   [40.985 µs 41.099 µs 41.233 µs]
+                        thrpt:  [5.9210 MiB/s 5.9403 MiB/s 5.9569 MiB/s]
 Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) low mild
+  1 (5.00%) high mild
 Benchmarking libzmq/pub_sub/tcp/subs=1/4096
 Benchmarking libzmq/pub_sub/tcp/subs=1/4096: Warming up for 2.0000 s
-Benchmarking libzmq/pub_sub/tcp/subs=1/4096: Collecting 20 samples in estimated 10.003 s (246k iterations)
+Benchmarking libzmq/pub_sub/tcp/subs=1/4096: Collecting 20 samples in estimated 10.009 s (235k iterations)
 Benchmarking libzmq/pub_sub/tcp/subs=1/4096: Analyzing
 libzmq/pub_sub/tcp/subs=1/4096
-                        time:   [40.778 µs 40.921 µs 41.069 µs]
-                        thrpt:  [95.115 MiB/s 95.459 MiB/s 95.794 MiB/s]
+                        time:   [42.161 µs 42.271 µs 42.394 µs]
+                        thrpt:  [92.142 MiB/s 92.410 MiB/s 92.650 MiB/s]
 Benchmarking libzmq/pub_sub/tcp/subs=1/65536
 Benchmarking libzmq/pub_sub/tcp/subs=1/65536: Warming up for 2.0000 s
-Benchmarking libzmq/pub_sub/tcp/subs=1/65536: Collecting 20 samples in estimated 10.003 s (167k iterations)
+Benchmarking libzmq/pub_sub/tcp/subs=1/65536: Collecting 20 samples in estimated 10.005 s (161k iterations)
 Benchmarking libzmq/pub_sub/tcp/subs=1/65536: Analyzing
 libzmq/pub_sub/tcp/subs=1/65536
-                        time:   [58.892 µs 59.141 µs 59.487 µs]
-                        thrpt:  [1.0260 GiB/s 1.0320 GiB/s 1.0364 GiB/s]
+                        time:   [61.208 µs 61.463 µs 61.777 µs]
+                        thrpt:  [1011.7 MiB/s 1016.9 MiB/s 1021.1 MiB/s]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
 
 Benchmarking libzmq/pub_sub/tcp/subs=8/16
 Benchmarking libzmq/pub_sub/tcp/subs=8/16: Warming up for 2.0000 s
-Benchmarking libzmq/pub_sub/tcp/subs=8/16: Collecting 20 samples in estimated 10.024 s (77k iterations)
+Benchmarking libzmq/pub_sub/tcp/subs=8/16: Collecting 20 samples in estimated 10.013 s (75k iterations)
 Benchmarking libzmq/pub_sub/tcp/subs=8/16: Analyzing
 libzmq/pub_sub/tcp/subs=8/16
-                        time:   [129.89 µs 130.54 µs 131.07 µs]
-                        thrpt:  [953.66 KiB/s 957.57 KiB/s 962.33 KiB/s]
+                        time:   [132.70 µs 133.08 µs 133.45 µs]
+                        thrpt:  [936.68 KiB/s 939.29 KiB/s 941.94 KiB/s]
 Benchmarking libzmq/pub_sub/tcp/subs=8/256
 Benchmarking libzmq/pub_sub/tcp/subs=8/256: Warming up for 2.0000 s
-Benchmarking libzmq/pub_sub/tcp/subs=8/256: Collecting 20 samples in estimated 10.017 s (76k iterations)
+Benchmarking libzmq/pub_sub/tcp/subs=8/256: Collecting 20 samples in estimated 10.001 s (74k iterations)
 Benchmarking libzmq/pub_sub/tcp/subs=8/256: Analyzing
 libzmq/pub_sub/tcp/subs=8/256
-                        time:   [130.86 µs 131.49 µs 132.13 µs]
-                        thrpt:  [14.782 MiB/s 14.854 MiB/s 14.925 MiB/s]
+                        time:   [133.49 µs 134.22 µs 134.94 µs]
+                        thrpt:  [14.474 MiB/s 14.552 MiB/s 14.631 MiB/s]
 Benchmarking libzmq/pub_sub/tcp/subs=8/4096
 Benchmarking libzmq/pub_sub/tcp/subs=8/4096: Warming up for 2.0000 s
-Benchmarking libzmq/pub_sub/tcp/subs=8/4096: Collecting 20 samples in estimated 10.009 s (72k iterations)
+Benchmarking libzmq/pub_sub/tcp/subs=8/4096: Collecting 20 samples in estimated 10.012 s (70k iterations)
 Benchmarking libzmq/pub_sub/tcp/subs=8/4096: Analyzing
 libzmq/pub_sub/tcp/subs=8/4096
-                        time:   [140.26 µs 141.29 µs 142.22 µs]
-                        thrpt:  [219.73 MiB/s 221.17 MiB/s 222.79 MiB/s]
+                        time:   [141.26 µs 143.10 µs 145.08 µs]
+                        thrpt:  [215.39 MiB/s 218.38 MiB/s 221.23 MiB/s]
 Benchmarking libzmq/pub_sub/tcp/subs=8/65536
 Benchmarking libzmq/pub_sub/tcp/subs=8/65536: Warming up for 2.0000 s
-Benchmarking libzmq/pub_sub/tcp/subs=8/65536: Collecting 20 samples in estimated 10.024 s (36k iterations)
+Benchmarking libzmq/pub_sub/tcp/subs=8/65536: Collecting 20 samples in estimated 10.041 s (36k iterations)
 Benchmarking libzmq/pub_sub/tcp/subs=8/65536: Analyzing
 libzmq/pub_sub/tcp/subs=8/65536
-                        time:   [277.79 µs 280.56 µs 282.77 µs]
-                        thrpt:  [1.7267 GiB/s 1.7404 GiB/s 1.7577 GiB/s]
+                        time:   [278.84 µs 281.61 µs 285.06 µs]
+                        thrpt:  [1.7129 GiB/s 1.7339 GiB/s 1.7511 GiB/s]
 
 Benchmarking libzmq/pub_sub/ipc/subs=1/16
 Benchmarking libzmq/pub_sub/ipc/subs=1/16: Warming up for 2.0000 s
-Benchmarking libzmq/pub_sub/ipc/subs=1/16: Collecting 20 samples in estimated 10.005 s (299k iterations)
+Benchmarking libzmq/pub_sub/ipc/subs=1/16: Collecting 20 samples in estimated 10.006 s (287k iterations)
 Benchmarking libzmq/pub_sub/ipc/subs=1/16: Analyzing
 libzmq/pub_sub/ipc/subs=1/16
-                        time:   [33.265 µs 33.367 µs 33.455 µs]
-                        thrpt:  [467.04 KiB/s 468.28 KiB/s 469.72 KiB/s]
+                        time:   [34.784 µs 34.859 µs 34.929 µs]
+                        thrpt:  [447.33 KiB/s 448.24 KiB/s 449.20 KiB/s]
 Benchmarking libzmq/pub_sub/ipc/subs=1/256
 Benchmarking libzmq/pub_sub/ipc/subs=1/256: Warming up for 2.0000 s
-Benchmarking libzmq/pub_sub/ipc/subs=1/256: Collecting 20 samples in estimated 10.005 s (287k iterations)
+Benchmarking libzmq/pub_sub/ipc/subs=1/256: Collecting 20 samples in estimated 10.001 s (279k iterations)
 Benchmarking libzmq/pub_sub/ipc/subs=1/256: Analyzing
 libzmq/pub_sub/ipc/subs=1/256
-                        time:   [34.519 µs 34.624 µs 34.710 µs]
-                        thrpt:  [7.0336 MiB/s 7.0512 MiB/s 7.0726 MiB/s]
+                        time:   [35.704 µs 35.873 µs 36.038 µs]
+                        thrpt:  [6.7746 MiB/s 6.8057 MiB/s 6.8380 MiB/s]
 Benchmarking libzmq/pub_sub/ipc/subs=1/4096
 Benchmarking libzmq/pub_sub/ipc/subs=1/4096: Warming up for 2.0000 s
-Benchmarking libzmq/pub_sub/ipc/subs=1/4096: Collecting 20 samples in estimated 10.005 s (274k iterations)
+Benchmarking libzmq/pub_sub/ipc/subs=1/4096: Collecting 20 samples in estimated 10.007 s (264k iterations)
 Benchmarking libzmq/pub_sub/ipc/subs=1/4096: Analyzing
 libzmq/pub_sub/ipc/subs=1/4096
-                        time:   [36.520 µs 36.576 µs 36.614 µs]
-                        thrpt:  [106.69 MiB/s 106.80 MiB/s 106.96 MiB/s]
-Found 1 outliers among 20 measurements (5.00%)
-  1 (5.00%) high mild
+                        time:   [37.664 µs 37.877 µs 38.151 µs]
+                        thrpt:  [102.39 MiB/s 103.13 MiB/s 103.71 MiB/s]
+Found 3 outliers among 20 measurements (15.00%)
+  2 (10.00%) high mild
+  1 (5.00%) high severe
 Benchmarking libzmq/pub_sub/ipc/subs=1/65536
 Benchmarking libzmq/pub_sub/ipc/subs=1/65536: Warming up for 2.0000 s
-Benchmarking libzmq/pub_sub/ipc/subs=1/65536: Collecting 20 samples in estimated 10.004 s (199k iterations)
+Benchmarking libzmq/pub_sub/ipc/subs=1/65536: Collecting 20 samples in estimated 10.005 s (190k iterations)
 Benchmarking libzmq/pub_sub/ipc/subs=1/65536: Analyzing
 libzmq/pub_sub/ipc/subs=1/65536
-                        time:   [50.354 µs 50.507 µs 50.665 µs]
-                        thrpt:  [1.2047 GiB/s 1.2085 GiB/s 1.2121 GiB/s]
+                        time:   [52.313 µs 52.547 µs 52.792 µs]
+                        thrpt:  [1.1562 GiB/s 1.1615 GiB/s 1.1667 GiB/s]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) low mild
 
 Benchmarking libzmq/pub_sub/ipc/subs=8/16
 Benchmarking libzmq/pub_sub/ipc/subs=8/16: Warming up for 2.0000 s
-Benchmarking libzmq/pub_sub/ipc/subs=8/16: Collecting 20 samples in estimated 10.012 s (106k iterations)
+Benchmarking libzmq/pub_sub/ipc/subs=8/16: Collecting 20 samples in estimated 10.016 s (102k iterations)
 Benchmarking libzmq/pub_sub/ipc/subs=8/16: Analyzing
 libzmq/pub_sub/ipc/subs=8/16
-                        time:   [94.904 µs 95.128 µs 95.349 µs]
-                        thrpt:  [1.2803 MiB/s 1.2832 MiB/s 1.2862 MiB/s]
+                        time:   [98.443 µs 98.667 µs 98.992 µs]
+                        thrpt:  [1.2331 MiB/s 1.2372 MiB/s 1.2400 MiB/s]
 Benchmarking libzmq/pub_sub/ipc/subs=8/256
 Benchmarking libzmq/pub_sub/ipc/subs=8/256: Warming up for 2.0000 s
-Benchmarking libzmq/pub_sub/ipc/subs=8/256: Collecting 20 samples in estimated 10.013 s (103k iterations)
+Benchmarking libzmq/pub_sub/ipc/subs=8/256: Collecting 20 samples in estimated 10.004 s (100k iterations)
 Benchmarking libzmq/pub_sub/ipc/subs=8/256: Analyzing
 libzmq/pub_sub/ipc/subs=8/256
-                        time:   [96.838 µs 97.135 µs 97.516 µs]
-                        thrpt:  [20.029 MiB/s 20.107 MiB/s 20.169 MiB/s]
+                        time:   [100.00 µs 100.29 µs 100.62 µs]
+                        thrpt:  [19.411 MiB/s 19.476 MiB/s 19.530 MiB/s]
 Found 2 outliers among 20 measurements (10.00%)
   2 (10.00%) high mild
 Benchmarking libzmq/pub_sub/ipc/subs=8/4096
 Benchmarking libzmq/pub_sub/ipc/subs=8/4096: Warming up for 2.0000 s
-Benchmarking libzmq/pub_sub/ipc/subs=8/4096: Collecting 20 samples in estimated 10.003 s (93k iterations)
+Benchmarking libzmq/pub_sub/ipc/subs=8/4096: Collecting 20 samples in estimated 10.017 s (90k iterations)
 Benchmarking libzmq/pub_sub/ipc/subs=8/4096: Analyzing
 libzmq/pub_sub/ipc/subs=8/4096
-                        time:   [107.29 µs 107.60 µs 107.94 µs]
-                        thrpt:  [289.51 MiB/s 290.42 MiB/s 291.26 MiB/s]
+                        time:   [110.37 µs 110.67 µs 110.97 µs]
+                        thrpt:  [281.61 MiB/s 282.38 MiB/s 283.13 MiB/s]
+Found 1 outliers among 20 measurements (5.00%)
+  1 (5.00%) high mild
 Benchmarking libzmq/pub_sub/ipc/subs=8/65536
 Benchmarking libzmq/pub_sub/ipc/subs=8/65536: Warming up for 2.0000 s
-Benchmarking libzmq/pub_sub/ipc/subs=8/65536: Collecting 20 samples in estimated 10.033 s (47k iterations)
+Benchmarking libzmq/pub_sub/ipc/subs=8/65536: Collecting 20 samples in estimated 10.023 s (45k iterations)
 Benchmarking libzmq/pub_sub/ipc/subs=8/65536: Analyzing
 libzmq/pub_sub/ipc/subs=8/65536
-                        time:   [210.03 µs 213.27 µs 216.91 µs]
-                        thrpt:  [2.2511 GiB/s 2.2895 GiB/s 2.3248 GiB/s]
+                        time:   [222.68 µs 226.15 µs 229.95 µs]
+                        thrpt:  [2.1234 GiB/s 2.1591 GiB/s 2.1928 GiB/s]
 
