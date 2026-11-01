@@ -1,5 +1,5 @@
 ### Runner
-- date: 2026-10-25T03:43:26Z
+- date: 2026-11-01T04:57:06Z
 - commit: 4141f43a03b84fe825295b197823a2c39c6a0c7b
 - ref: refs/heads/v1-bench-harness
 - runner: ubuntu-24.04-arm
@@ -15,14 +15,14 @@
 
 ### Memory
 -                total        used        free      shared  buff/cache   available
-- Mem:            15Gi       1.2Gi        12Gi        45Mi       1.7Gi        14Gi
+- Mem:            15Gi       1.2Gi        12Gi        46Mi       1.7Gi        14Gi
 
 ### Kernel
-- Linux runnervm4yw5a 6.17.0-1022-azure #22-Ubuntu SMP Mon Jul 27 17:12:01 UTC 2026 aarch64 aarch64 aarch64 GNU/Linux
+- Linux runnervm9u1px 7.0.0-1017-azure #17~24.04.1-Ubuntu SMP PREEMPT Thu Sep 24 19:06:39 UTC 2026 aarch64 aarch64 aarch64 GNU/Linux
 
 ### libzmq
 - Package: libzmq3-dev
 - Version: 4.3.5-1build2
 
 ### rustc
-- rustc 1.99.0 (b940084d7 2026-09-28)
+- rustc 1.99.1 (58cf8f9c3 2026-10-13)
